@@ -17,7 +17,12 @@ public class PlayerBehaviourScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             GameObject c = (GameObject)Instantiate(carrot, this.transform.position, this.transform.rotation);
+            GUIDraw scoreScript = GameObject.Find("ScoreMeter").GetComponent<GUIDraw>();
+
             c.transform.parent = world.transform;
+                        
+            scoreScript.worldHunger -= 5;
+            if (scoreScript.worldHunger < 0) scoreScript.worldHunger = 0;
         }
 	}
 }
