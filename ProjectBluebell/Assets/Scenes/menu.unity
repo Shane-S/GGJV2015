@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450224d05e58ee94d8ff9fc2272e0d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: game
   textInputBoxStyle:
     m_Name: 
     m_Normal:
