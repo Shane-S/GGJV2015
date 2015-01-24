@@ -13,8 +13,6 @@ public class GUIDraw : MonoBehaviour
     private GUIStyle fillStyle;
     private GUIStyle outsideStyle;
 
-    public float worldHunger = 0;
-
     private float fillPercent = 0.5f;
 
     void Start()
@@ -39,6 +37,8 @@ public class GUIDraw : MonoBehaviour
     /// </summary>
     void DrawStarvationMeterText()
     {
+        GameObject parent = GameObject.Find("ScoreMeter");
+        float worldHunger = parent.GetComponent<Hunger>().hunger;
         GUI.Label(meterDims, "Starvation level: " + (int)worldHunger);
     }
 
@@ -57,11 +57,5 @@ public class GUIDraw : MonoBehaviour
                                  meterFill, fillStyle);
             GUI.EndGroup();
         GUI.EndGroup();
-    }
-
-    void Update()
-    {
-        if(worldHunger < 100)
-            worldHunger += 0.05f;
     }
 }

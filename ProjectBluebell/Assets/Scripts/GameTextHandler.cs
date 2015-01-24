@@ -8,27 +8,40 @@ public class GameTextHandler : MonoBehaviour
     private char character;
     private string textPrompt;
     private string textInput;
+    private string textFeedback;
     private string menuOptions;
     public string gameScene;
     public GUIStyle textInputBoxStyle;
+    public GUIStyle textFeedbackStyle;
     private float textInputHeight;
     private float textInputWidth;
+    private float textFeedbackHeight;
+    private float textFeedbackWidth;
     private bool handled;
     private Event previous;
+    private float feedBackTime;
+    private float feedBackTimeLeft;
+    private bool displayFeedback;
 
     // Use this for initialization
     void Start()
     {
         textPrompt = "What do you want to do? ";
+        textFeedback = "Feedback...";
         textInput = "";
         SetDimensions();
         handled = false;
+        feedBackTime = 2f;
+        feedBackTimeLeft = 0;
+        displayFeedback = false;
     }
 
     void SetDimensions()
     {
         textInputHeight = Screen.height / 20;
         textInputWidth = Screen.width / 12;
+        textFeedbackHeight = Screen.height / 20;
+        textFeedbackWidth = Screen.width / 12;
     }
 
     void OnGUI()
@@ -52,6 +65,11 @@ public class GameTextHandler : MonoBehaviour
         }
 
         GUI.Label(new Rect(Screen.width / 4f, Screen.height / 1.2f, textInputWidth, textInputHeight), textPrompt + textInput, textInputBoxStyle);
+
+        if (displayFeedback)
+        {
+            GUI.Label(new Rect(Screen.width / 4f, Screen.height / 1.1f, textFeedbackWidth, textFeedbackHeight), textFeedback, textFeedbackStyle);
+        }
     }
 
     bool checkInputValidity()
@@ -59,17 +77,22 @@ public class GameTextHandler : MonoBehaviour
 
         if (string.Equals(textInput, "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
         {
-            GUIDraw scoreScript = GameObject.Find("ScoreMeter").GetComponent<GUIDraw>();
-            scoreScript.worldHunger -= 5;
-            if (scoreScript.worldHunger < 0) scoreScript.worldHunger = 0;
+            Hunger scoreScript = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
+            scoreScript.hunger -= 5;
+            if (scoreScript.hunger < 0) scoreScript.hunger = 0;
 
             PlantCarrot();
             textInput = "";
             return true;
         }
-        textInput = "";
-
-        return false;
+        else
+        {
+            displayFeedback = true;
+            feedBackTimeLeft = feedBackTime;
+            textInput = "";
+            textFeedback = "Say What??";
+            return false;
+        }
     }
 
     private void PlantCarrot()
@@ -123,6 +146,15 @@ public class GameTextHandler : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             checkInputValidity();
+        }
+
+        if (feedBackTimeLeft >= 0)
+        {
+            feedBackTimeLeft -= Time.deltaTime;
+        }
+        else if (feedBackTimeLeft < 0)
+        {
+            displayFeedback = false;
         }
     }
 }

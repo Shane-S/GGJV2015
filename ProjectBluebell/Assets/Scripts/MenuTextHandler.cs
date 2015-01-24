@@ -7,6 +7,7 @@ public class MenuTextHandler : MonoBehaviour {
     private char character;
     private string textPrompt;
     private string textInput;
+    private string namePrompt;
     private string menuOptions;
     public string gameScene;
     public GUIStyle textInputBoxStyle;
@@ -22,6 +23,7 @@ public class MenuTextHandler : MonoBehaviour {
 	void Start () {
         menuOptions = "|  Play  |  Exit  |";
         textPrompt = "What do you want to do? ";
+        namePrompt = "What is your name? ";
         textInput = "";
         SetDimensions();
         handled = false;
@@ -38,7 +40,6 @@ public class MenuTextHandler : MonoBehaviour {
     void OnGUI()
     {
         Event e = Event.current;
-        
         if (e.isKey)
         {
 
@@ -56,11 +57,27 @@ public class MenuTextHandler : MonoBehaviour {
         }
 
         GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), menuOptions, menuOptionStyle);
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput, textInputBoxStyle);
+        
+        // If the player hasn't entered their name, show the name prompt; otherwise, show the "What do you want to
+        // do" prompt
+        if(GlobalState.playerName == null)
+            GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight),
+                      namePrompt + textInput, textInputBoxStyle);
+        else
+            GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), 
+                      textPrompt + textInput, textInputBoxStyle);
     }
 
     bool checkInputValidity()
     {
+        // Set the player's name if it hasn't yet been set
+        if (GlobalState.playerName == null)
+        {
+            GlobalState.playerName = textInput;
+            textInput = "";
+            return true;
+        }
+
         if (string.Equals(textInput, "Play", System.StringComparison.CurrentCultureIgnoreCase))
         {
             PlayPressed();
