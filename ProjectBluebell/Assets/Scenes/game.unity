@@ -145,14 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf29f67bd19c0e74caca49c1176ce469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  position:
-    serializedVersion: 2
-    x: 16
-    y: 16
-    width: 128
-    height: 24
-  color: {r: 1, g: 0, b: 0, a: 1}
+  position: {x: 16, y: 16}
+  meterFill: {fileID: 2800000, guid: 73cdc8b061d11bc46b3afddfbcfc557c, type: 3}
+  borderDimensions: 3
+  worldHunger: 0
 --- !u!4 &404436425
 Transform:
   m_ObjectHideFlags: 0
