@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404436425}
   - 114: {fileID: 404436424}
+  - 114: {fileID: 404436426}
   m_Layer: 0
   m_Name: ScoreMeter
   m_TagString: Untagged
@@ -148,7 +149,6 @@ MonoBehaviour:
   position: {x: 16, y: 16}
   meterFill: {fileID: 2800000, guid: 73cdc8b061d11bc46b3afddfbcfc557c, type: 3}
   borderDimensions: 3
-  worldHunger: 0
 --- !u!4 &404436425
 Transform:
   m_ObjectHideFlags: 0
@@ -161,6 +161,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &404436426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404436423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc621d4a87eb694b9a623621a831ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 0
 --- !u!1 &413395550
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1 &1789412785
 GameObject:
   m_ObjectHideFlags: 0

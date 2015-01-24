@@ -59,9 +59,9 @@ public class GameTextHandler : MonoBehaviour
 
         if (string.Equals(textInput, "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
         {
-            GUIDraw scoreScript = GameObject.Find("ScoreMeter").GetComponent<GUIDraw>();
-            scoreScript.worldHunger -= 5;
-            if (scoreScript.worldHunger < 0) scoreScript.worldHunger = 0;
+            Hunger scoreScript = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
+            scoreScript.hunger -= 5;
+            if (scoreScript.hunger < 0) scoreScript.hunger = 0;
 
             PlantCarrot();
             textInput = "";
