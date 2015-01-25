@@ -22,6 +22,7 @@ public class GameTextHandler : MonoBehaviour
     private float feedBackTime;
     private float feedBackTimeLeft;
     private bool displayFeedback;
+    private bool enteredText; // Whether the player entered text that needs to be evaluated
 
     // Use this for initialization
     void Start()
@@ -72,41 +73,36 @@ public class GameTextHandler : MonoBehaviour
         }
     }
 
-    bool checkInputValidity()
+    /// <summary>
+    /// Returns whether the player has entered text awaiting validation.
+    /// </summary>
+    /// <returns>Whether the player has entered text for validation.</returns>
+    public bool textWasEntered()
     {
-
-        if (string.Equals(textInput, "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
-        {
-            Hunger scoreScript = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
-            scoreScript.resetHungerTimer();
-            PlantCarrot();
-            textInput = "";
-            return true;
-        }
-        else
-        {
-            displayFeedback = true;
-            feedBackTimeLeft = feedBackTime;
-            textInput = "";
-            textFeedback = "Say What??";
-            return false;
-        }
+        return enteredText;
     }
 
-    private void PlantCarrot()
+    /// <summary>
+    /// Clears the current input.
+    /// </summary>
+    public void clearInput()
     {
-        PlayerBehaviourScript playerBehaviour = GameObject.Find("Player").GetComponent<PlayerBehaviourScript>();
+        enteredText = false;
+        textInput = "";
+    }
 
-        Debug.Log("Planting a carrot");
+    public void showFeedback()
+    {
+        displayFeedback = true;
+        feedBackTimeLeft = feedBackTime;
+        textInput = "";
+        textFeedback = "Say What??";
+    }
 
-        if (playerBehaviour != null)
-        {
-            playerBehaviour.PlantCarrot();
-        }
-        else
-        {
-            Debug.LogWarning("PlayerBehaviourScript not found");
-        }
+    // Gets the text that was input.
+    public string getInput()
+    {
+        return textInput;
     }
 
     private void ExitPressed()
@@ -143,7 +139,7 @@ public class GameTextHandler : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            checkInputValidity();
+            enteredText = true;
         }
 
         if (feedBackTimeLeft >= 0)
