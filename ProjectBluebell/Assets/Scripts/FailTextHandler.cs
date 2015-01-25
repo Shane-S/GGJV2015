@@ -23,8 +23,8 @@ public class FailTextHandler : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        storyString = "You failed to save humanity.";
-        textPrompt = "What do you want to do? ";
+        storyString = "You failed to end world hunger.";
+        textPrompt = "What do you do now? ";
         textInput = "";
         SetDimensions();
         handled = false;

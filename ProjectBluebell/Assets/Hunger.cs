@@ -17,53 +17,42 @@ public class Hunger : MonoBehaviour {
     /// The current world hunger level.
     /// </summary>
     public float hunger = 0;
-    public string failState;
-    public bool fading;
 
-
-    // Time until the next auto-increment
+    /// <summary>
+    /// Time until the next auto-increment.
+    /// </summary>
     private float timeToIncrease = 0;
+
+    /// <summary>
+    /// Whether the hunger timer is running.
+    /// </summary>
+    private bool running = true;
 
 	// Use this for initialization
 	void Start () {
-        fading = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!fading)
-        {
-			timeToIncrease += Time.deltaTime;
-			if (timeToIncrease >= interval)
-			{
-				hunger += increasePerInterval;
-				timeToIncrease = 0;
-			}     
+        if(!running) return;
 		
-            if (hunger < 100)
-                hunger += 0.05f;
-
-            if (hunger >= 100)
-            {
-                CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
-
-                if (fade != null)
-                {
-                    fading = true;
-                    fade.FadeOut(FailGame);
-                }
-                else
-                {
-                    Debug.LogWarning("CameraFader not found");
-                }
-            }
-        }
+        // Tick the timer and increment the hunger value if the timer value is above the specified interval
+        timeToIncrease += Time.deltaTime;
+		if (timeToIncrease >= interval)
+		{
+			hunger += increasePerInterval;
+            hunger = hunger > 100 ? 100 : hunger;
+			timeToIncrease = 0;
+		}     
 	}
 
-    void FailGame()
+    /// <summary>
+    /// Stops the hunger timer from ticking (and it can't be restarted).
+    /// </summary>
+    public void stopHungerTimer()
     {
-        Application.LoadLevel(failState); 
-	}
+        running = false;
+    }
 
     /// <summary>
     /// Resets the hunger's auto-increment timer.
@@ -74,10 +63,20 @@ public class Hunger : MonoBehaviour {
     }
 
     /// <summary>
+    /// Clamps values in the editor.
+    /// </summary>
+    void OnValidate()
+    {
+        interval = Mathf.Clamp(interval, 0.5f, 20);
+        increasePerInterval = Mathf.Clamp(increasePerInterval, 1, 15);
+        hunger = Mathf.Clamp(hunger, 0, 100);
+    }
+
+    /// <summary>
     /// Gets the amount of time (in milliseconds) until the hunger meter will auto-increment.
     /// </summary>
     /// <returns>Time in millisconds to the next increase.</returns>
-    public float getTimeToIncrease()
+    public float getTimeToTick()
     {
         return timeToIncrease;
     }

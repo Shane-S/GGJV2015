@@ -22,13 +22,21 @@ public class GameTextHandler : MonoBehaviour
     private float feedBackTime;
     private float feedBackTimeLeft;
     private bool displayFeedback;
+    private bool enteredText; // Whether the player entered text that needs to be evaluated
+
+    // Blinking Cursor
+    private float m_TimeStamp;
+    private bool cursor = false;
+    private string cursorChar;
+    private int maxStringLength = 124;
 
     // Use this for initialization
     void Start()
     {
-        textPrompt = "What do you want to do? ";
-        textFeedback = "Feedback...";
+        textPrompt = "What do you do now? ";
+        textFeedback = "";
         textInput = "";
+        cursorChar = "";
         SetDimensions();
         handled = false;
         feedBackTime = 2f;
@@ -38,6 +46,8 @@ public class GameTextHandler : MonoBehaviour
 
     void SetDimensions()
     {
+        textInputBoxStyle.border.left = (int)(Screen.width/1.3);
+        textFeedbackStyle.border.left = (int)(Screen.width / 1.46);
         textInputHeight = Screen.height / 20;
         textInputWidth = Screen.width / 12;
         textFeedbackHeight = Screen.height / 20;
@@ -64,49 +74,44 @@ public class GameTextHandler : MonoBehaviour
             e.Use();
         }
 
-        GUI.Label(new Rect(Screen.width / 4f, Screen.height / 1.2f, textInputWidth, textInputHeight), textPrompt + textInput, textInputBoxStyle);
+        GUI.Label(new Rect(Screen.width / 8f, Screen.height / 1.2f, textInputWidth, textInputHeight), textPrompt + textInput + cursorChar, textInputBoxStyle);
 
         if (displayFeedback)
         {
-            GUI.Label(new Rect(Screen.width / 4f, Screen.height / 1.1f, textFeedbackWidth, textFeedbackHeight), textFeedback, textFeedbackStyle);
+            GUI.Label(new Rect(Screen.width / 6f, Screen.height / 1.1f, textFeedbackWidth, textFeedbackHeight), textFeedback, textFeedbackStyle);
         }
     }
 
-    bool checkInputValidity()
+    /// <summary>
+    /// Returns whether the player has entered text awaiting validation.
+    /// </summary>
+    /// <returns>Whether the player has entered text for validation.</returns>
+    public bool textWasEntered()
     {
-
-        if (string.Equals(textInput, "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
-        {
-            Hunger scoreScript = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
-            scoreScript.resetHungerTimer();
-            PlantCarrot();
-            textInput = "";
-            return true;
-        }
-        else
-        {
-            displayFeedback = true;
-            feedBackTimeLeft = feedBackTime;
-            textInput = "";
-            textFeedback = "Say What??";
-            return false;
-        }
+        return enteredText;
     }
 
-    private void PlantCarrot()
+    /// <summary>
+    /// Clears the current input.
+    /// </summary>
+    public void clearInput()
     {
-        PlayerBehaviourScript playerBehaviour = GameObject.Find("Player").GetComponent<PlayerBehaviourScript>();
+        enteredText = false;
+        textInput = "";
+    }
 
-        Debug.Log("Planting a carrot");
+    public void showFeedback()
+    {
+        displayFeedback = true;
+        feedBackTimeLeft = feedBackTime;
+        textInput = "";
+        textFeedback = "Say What??";
+    }
 
-        if (playerBehaviour != null)
-        {
-            playerBehaviour.PlantCarrot();
-        }
-        else
-        {
-            Debug.LogWarning("PlayerBehaviourScript not found");
-        }
+    // Gets the text that was input.
+    public string getInput()
+    {
+        return textInput;
     }
 
     private void ExitPressed()
@@ -143,7 +148,7 @@ public class GameTextHandler : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            checkInputValidity();
+            enteredText = true;
         }
 
         if (feedBackTimeLeft >= 0)
@@ -154,5 +159,28 @@ public class GameTextHandler : MonoBehaviour
         {
             displayFeedback = false;
         }
+
+        if (Time.time - m_TimeStamp >= 0.5)
+        {
+            m_TimeStamp = Time.time;
+            if (cursor == false)
+            {
+                cursor = true;
+                if ((textPrompt + textInput).Length < maxStringLength)
+                {
+                    cursorChar += "_";
+                }
+            }
+            else
+            {
+                cursor = false;
+                if (cursorChar.Length != 0)
+                {
+                    cursorChar = cursorChar.Substring(0, cursorChar.Length - 1);
+                }
+            }
+        }
     }
+
+
 }
