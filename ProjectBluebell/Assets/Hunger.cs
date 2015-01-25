@@ -19,6 +19,11 @@ public class Hunger : MonoBehaviour {
     public float hunger = 0;
 
     /// <summary>
+    /// The number of carrots planted.
+    /// </summary>
+    public float carrotsPlanted = 0;
+
+    /// <summary>
     /// Time until the next auto-increment.
     /// </summary>
     private float timeToIncrease = 0;
@@ -67,6 +72,7 @@ public class Hunger : MonoBehaviour {
     /// </summary>
     void OnValidate()
     {
+        carrotsPlanted = 0;
         interval = Mathf.Clamp(interval, 0.5f, 20);
         increasePerInterval = Mathf.Clamp(increasePerInterval, 1, 15);
         hunger = Mathf.Clamp(hunger, 0, 100);

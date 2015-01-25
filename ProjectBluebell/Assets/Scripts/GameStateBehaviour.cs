@@ -10,6 +10,9 @@ public class GameStateBehaviour : MonoBehaviour {
     private int result = -1;
 
     public string failState;
+    public string winState;
+
+    public int carrotsToWin = 75;
 
     private Hunger hungerLevel;           // Reference to the hunger component in ScoreMeter
     private GameTextHandler textInput;    // Reference to the text box
@@ -25,10 +28,11 @@ public class GameStateBehaviour : MonoBehaviour {
 	void Update ()
     {
         if (!finished)
+        {
             checkForEndGame();
-
-        if (textInput.textWasEntered())
-            checkInput();
+            if (textInput.textWasEntered())
+                checkInput();
+        }
 	}
 
     void checkInput()
@@ -37,6 +41,7 @@ public class GameStateBehaviour : MonoBehaviour {
         {
             hungerLevel.resetHungerTimer();
             player.PlantCarrot();
+            hungerLevel.carrotsPlanted++;
         }
         else textInput.showFeedback();
 
@@ -45,24 +50,30 @@ public class GameStateBehaviour : MonoBehaviour {
 
     void checkForEndGame()
     {
-        if (hungerLevel.hunger >= 100)
-        {
-            // Stop the hunger from incrementing
-            hungerLevel.stopHungerTimer();
-            finished = true;
-            result = LOST;
+        finished = (hungerLevel.carrotsPlanted == carrotsToWin) || (hungerLevel.hunger >= 100);
 
+        if(finished)
+        {
             CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
-            
-            if (fade != null)
+            hungerLevel.stopHungerTimer();
+
+            if (hungerLevel.carrotsPlanted == carrotsToWin)
             {
-                fade.FadeOut(FailGame);
+                result = WON;
+                fade.FadeOut(WinGame);
             }
             else
             {
-                Debug.LogWarning("CameraFader not found");
+                result = LOST;
+                fade.FadeOut(FailGame);
             }
+
         }
+    }
+
+    void WinGame()
+    {
+        Application.LoadLevel(winState);
     }
 
     /// <summary>
