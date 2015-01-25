@@ -320,7 +320,7 @@ MonoBehaviour:
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     veggiesToWin: 35
     hungerInterval: 2
-    hungerIncreasePerTick: 6
+    hungerIncreasePerTick: .680000007
     cutsceneText: This is another test.
     hungerDecreaseInterval: 4
     hungerIncreaseInterval: 4
