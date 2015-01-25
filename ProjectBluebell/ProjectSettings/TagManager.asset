@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - ScoreMeter
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -41,6 +42,10 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Player
+    userID: 1
+    uniqueID: 613897687
+    locked: 0
   - name: Carrot
     userID: 2
     uniqueID: 3600126011
@@ -48,8 +53,4 @@ TagManager:
   - name: World
     userID: 3
     uniqueID: 4014022021
-    locked: 0
-  - name: Player
-    userID: 1
-    uniqueID: 613897687
     locked: 0
