@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: a75e0c7bed320e040afccfddc70af4ee
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CharArmRAnim_0
+    21300002: CharArmRAnim_1
+    21300004: CharArmRAnim_2
+    21300006: CharArmRAnim_3
+    21300008: CharArmRAnim_4
+    21300010: CharArmRAnim_5
+    21300012: CharArmRAnim_6
+    21300014: CharArmRAnim_7
+    21300016: CharArmRAnim_8
+    21300018: CharArmRAnim_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CharArmRAnim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3236
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_1
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 3236
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_2
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 3236
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_3
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 3236
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_4
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3236
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2376
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_6
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 2376
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_7
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2376
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_8
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 2376
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharArmRAnim_9
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2376
+        width: 750
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
