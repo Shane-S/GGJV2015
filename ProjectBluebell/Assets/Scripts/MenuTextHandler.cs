@@ -10,6 +10,7 @@ public class MenuTextHandler : MonoBehaviour {
     private string namePrompt;
     private string menuOptions;
     public string gameScene;
+    public string menuScene;
     public GUIStyle textInputBoxStyle;
     public GUIStyle menuOptionStyle;
     private float textInputHeight;
@@ -151,7 +152,8 @@ public class MenuTextHandler : MonoBehaviour {
 
     void QuitGame()
     {
-        Application.Quit();
+        Destroy(GameObject.Find("Globals"));
+        Application.LoadLevel(menuScene);
     }
 	
 	// Update is called once per frame
