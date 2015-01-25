@@ -38,4 +38,9 @@ public class GlobalState : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public bool isMaxLevel()
+    {
+        return currentLevel == maxLevel;
+    }
 }

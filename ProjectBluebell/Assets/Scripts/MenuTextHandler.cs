@@ -20,6 +20,15 @@ public class MenuTextHandler : MonoBehaviour {
     private bool handled;
     private Event previous;
 
+    // feedback text
+    private string textFeedback;
+    public GUIStyle textFeedbackStyle;
+    private float textFeedbackHeight;
+    private float textFeedbackWidth;
+    private bool displayFeedback;
+    private float feedBackTime;
+    private float feedBackTimeLeft;
+
     // Blinking Cursor
     private float m_TimeStamp;
     private bool cursor = false;
@@ -35,11 +44,15 @@ public class MenuTextHandler : MonoBehaviour {
         menuOptions = "";
         textPrompt = "What do you do now? ";
         namePrompt = "What is your name? ";
+        textFeedback = "";
         textInput = "";
         SetDimensions();
         handled = false;
         gState = GameObject.Find("Globals").GetComponent<GlobalState>();
         gState.playerName = null;
+        displayFeedback = false;
+        feedBackTime = 2;
+        feedBackTimeLeft = 0;
 	}
 
     void SetDimensions()
@@ -48,6 +61,8 @@ public class MenuTextHandler : MonoBehaviour {
         textInputWidth = Screen.width / 12;
         textMenuOptionsHeight = Screen.height / 20;
         textMenuOptionsWidth = Screen.width / 12;
+        textFeedbackHeight = Screen.height / 20;
+        textFeedbackWidth = Screen.width / 12;
     }
 
     void OnGUI()
@@ -77,6 +92,11 @@ public class MenuTextHandler : MonoBehaviour {
         else
             GUI.Label(new Rect(Screen.width / 5, Screen.height / 4, textInputWidth, textInputHeight),
                       textPrompt + textInput + cursorChar, textInputBoxStyle);
+
+        if (displayFeedback)
+        {
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 3.4f, textFeedbackWidth, textFeedbackHeight), textFeedback, textFeedbackStyle);
+        }
     }
 
     bool checkInputValidity()
@@ -112,6 +132,8 @@ public class MenuTextHandler : MonoBehaviour {
                 textInput.Contains("plant") || textInput.Contains("Plant"))
                 return true;
         }
+
+        showFeedback();
         return false;
     }
 
@@ -153,6 +175,14 @@ public class MenuTextHandler : MonoBehaviour {
         Destroy(GameObject.Find("Globals"));
         Application.LoadLevel(menuScene);
     }
+
+    public void showFeedback()
+    {
+        displayFeedback = true;
+        feedBackTimeLeft = feedBackTime;
+        textInput = "";
+        textFeedback = "Hint: Play";
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -165,6 +195,15 @@ public class MenuTextHandler : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             checkInputValidity();
+        }
+
+        if (feedBackTimeLeft >= 0)
+        {
+            feedBackTimeLeft -= Time.deltaTime;
+        }
+        else if (feedBackTimeLeft < 0)
+        {
+            displayFeedback = false;
         }
 
         if (Time.time - m_TimeStamp >= 0.5)

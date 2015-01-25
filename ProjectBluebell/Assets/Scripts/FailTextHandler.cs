@@ -26,6 +26,15 @@ public class FailTextHandler : MonoBehaviour {
     private string cursorChar;
     private int maxStringLength = 50;
 
+    // feedback text
+    private string textFeedback;
+    public GUIStyle textFeedbackStyle;
+    private float textFeedbackHeight;
+    private float textFeedbackWidth;
+    private bool displayFeedback;
+    private float feedBackTime;
+    private float feedBackTimeLeft;
+
     private string[] play = { "Play", "Start", "Begin", "Start Game", "Play Game", "Begin Game", "Launch", "Launch Game", "Play Again", "Try Again", "replay", "Go Again", "Again" };
     private string[] exit = { "Exit", "Quit", "Stop", "Exit Game", "Quit Game", "Stop Game", "Escape", "Escape Game" };
     private string[] menu = { "Main Menu", "Menu", "Start Screen" };
@@ -38,6 +47,9 @@ public class FailTextHandler : MonoBehaviour {
         textInput = "";
         SetDimensions();
         handled = false;
+        displayFeedback = false;
+        feedBackTime = 2;
+        feedBackTimeLeft = 0;
     }
 
     void SetDimensions()
@@ -46,6 +58,8 @@ public class FailTextHandler : MonoBehaviour {
         textInputWidth = Screen.width / 12;
         textMenuOptionsHeight = Screen.height / 20;
         textMenuOptionsWidth = Screen.width / 12;
+        textFeedbackHeight = Screen.height / 20;
+        textFeedbackWidth = Screen.width / 12;
     }
 
     void OnGUI()
@@ -69,8 +83,21 @@ public class FailTextHandler : MonoBehaviour {
             e.Use();
         }
 
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), storyString, menuOptionStyle);
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput + cursorChar, textInputBoxStyle);
+        GUI.Label(new Rect(Screen.width / 5, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), storyString, menuOptionStyle);
+        GUI.Label(new Rect(Screen.width / 5, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput + cursorChar, textInputBoxStyle);
+        
+        if (displayFeedback)
+        {
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 1.8f, textFeedbackWidth, textFeedbackHeight), textFeedback, textFeedbackStyle);
+        }
+    }
+
+    public void showFeedback()
+    {
+        displayFeedback = true;
+        feedBackTimeLeft = feedBackTime;
+        textInput = "";
+        textFeedback = "Hint: Play again";
     }
 
     bool checkInputValidity()
@@ -172,6 +199,16 @@ public class FailTextHandler : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        if (feedBackTimeLeft >= 0)
+        {
+            feedBackTimeLeft -= Time.deltaTime;
+        }
+        else if (feedBackTimeLeft < 0)
+        {
+            displayFeedback = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             if (textInput.Length - 1 >= 0)
@@ -210,6 +247,7 @@ public class FailTextHandler : MonoBehaviour {
             if (string.Equals(textInput, s, System.StringComparison.CurrentCultureIgnoreCase))
                 return true;
         }
+        showFeedback();
         return false;
     }
 }

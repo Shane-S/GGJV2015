@@ -221,6 +221,65 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  textFeedbackStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: .956862748, g: .125490203, b: .125490203, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: d23c18a4ad700b5489c2d8525cfd1e0f, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!4 &1828850
 Transform:
   m_ObjectHideFlags: 0
@@ -310,6 +369,7 @@ MonoBehaviour:
   levels:
   - veggies:
     - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
+<<<<<<< HEAD
     veggiesToWin: 2
     timePerTick: 3
     increasePerTick: 2
@@ -317,6 +377,15 @@ MonoBehaviour:
     increaseOnFailure: 2
     cutsceneText: "You are a farmer with a plentiful supply of carrots.\r\nThe world
       is hungry.\r\nWhat do you do now?\r\n\r\nPlant a carrot."
+=======
+    veggiesToWin: 3
+    hungerInterval: .100000001
+    hungerIncreasePerTick: 100
+    cutsceneText: You are a farmer with a plentiful supply of carrots.\nThe world
+      is hungry.\nWhat do you do now?\n\nPlant a carrot.
+    hungerDecreaseInterval: 3
+    hungerIncreaseInterval: 3
+>>>>>>> f65416e7acdae2763a4a15a05beca361dade906c
   - veggies:
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     veggiesToWin: 2

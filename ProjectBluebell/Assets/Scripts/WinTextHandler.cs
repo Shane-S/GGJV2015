@@ -31,6 +31,15 @@ public class WinTextHandler : MonoBehaviour
 
     private GlobalState gState;
 
+    // feedback text
+    private string textFeedback;
+    public GUIStyle textFeedbackStyle;
+    private float textFeedbackHeight;
+    private float textFeedbackWidth;
+    private bool displayFeedback;
+    private float feedBackTime;
+    private float feedBackTimeLeft;
+
     // Use this for initialization
     void Start()
     {
@@ -41,8 +50,20 @@ public class WinTextHandler : MonoBehaviour
         SetDimensions();
         handled = false;
         hasWon = false;
-        state = (int)states.playagain;
+
+        if (gState.isMaxLevel())
+        {
+            textPrompt = "Main Menu? ";
+            state = (int)states.mainmenu;
+        }
+        else
+        {
+            state = (int)states.playagain;
+        }       
         fading = false;
+        displayFeedback = false;
+        feedBackTime = 2;
+        feedBackTimeLeft = 0;
     }
 
     void SetDimensions()
@@ -51,6 +72,8 @@ public class WinTextHandler : MonoBehaviour
         textInputWidth = Screen.width / 12;
         textMenuOptionsHeight = Screen.height / 20;
         textMenuOptionsWidth = Screen.width / 12;
+        textFeedbackHeight = Screen.height / 20;
+        textFeedbackWidth = Screen.width / 12;
     }
 
     void OnGUI()
@@ -74,8 +97,21 @@ public class WinTextHandler : MonoBehaviour
             e.Use();
         }
 
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), storyString, menuOptionStyle);
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput + cursorChar, textInputBoxStyle);
+        GUI.Label(new Rect(Screen.width / 5, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), storyString, menuOptionStyle);
+        GUI.Label(new Rect(Screen.width / 5, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput + cursorChar, textInputBoxStyle);
+
+        if (displayFeedback)
+        {
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 1.8f, textFeedbackWidth, textFeedbackHeight), textFeedback, textFeedbackStyle);
+        }
+    }
+
+    public void showFeedback()
+    {
+        displayFeedback = true;
+        feedBackTimeLeft = feedBackTime;
+        textInput = "";
+        textFeedback = "Hint: Yes, or perhaps no?";
     }
 
     bool checkInputValidity()
@@ -117,9 +153,19 @@ public class WinTextHandler : MonoBehaviour
                     }
                 case (int)states.mainmenu:
                     {
-                        state = (int)states.playagain;
-                        textPrompt = "Play next level? ";
-                        textInput = "";
+                        if (gState.isMaxLevel())
+                        {
+                            state = (int)states.mainmenu;
+                            textPrompt = "Main Menu? ";
+                            textInput = "";
+                        }
+                        else
+                        {
+                            state = (int)states.playagain;
+                            textPrompt = "Play next level? ";
+                            textInput = "";
+                        }
+                       
                         break;
                     }
                 default:
@@ -129,7 +175,7 @@ public class WinTextHandler : MonoBehaviour
             }
             return true;
         }
-       
+        showFeedback();
         textInput = "";
         return false;
     }
@@ -200,6 +246,15 @@ public class WinTextHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (feedBackTimeLeft >= 0)
+        {
+            feedBackTimeLeft -= Time.deltaTime;
+        }
+        else if (feedBackTimeLeft < 0)
+        {
+            displayFeedback = false;
+        }
+
         if(!fading)
         {
             if (Input.GetKeyDown(KeyCode.Backspace))
