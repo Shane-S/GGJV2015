@@ -176,6 +176,7 @@ MonoBehaviour:
   increasePerInterval: 5
   hunger: 0
   failState: failstate
+  fading: 0
 --- !u!1 &413395550
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,8 +455,8 @@ MonoBehaviour:
   textInputBoxStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: e2a2e96078bb2ea4fa17c812715a92ac, type: 3}
+      m_TextColor: {r: .867647052, g: .867647052, b: .867647052, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -488,7 +489,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 0
+      m_Left: 8
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
@@ -513,8 +514,8 @@ MonoBehaviour:
   textFeedbackStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: e2a2e96078bb2ea4fa17c812715a92ac, type: 3}
+      m_TextColor: {r: .866666675, g: .866666675, b: .866666675, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -547,7 +548,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 0
+      m_Left: 8
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
