@@ -6,26 +6,18 @@ public class CameraFader : MonoBehaviour {
 
     public Color fadeColor = Color.black;
     public float fadeTime = 5f;
-    private bool fadingOut;
+    public bool fadeInOnStart;
 
 	// Use this for initialization
 	void Start () {
-        fadingOut = false;
+        if (fadeInOnStart)
+        {
+            FadeIn();
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //if (fadingOut)
-        //{
-        //    if (fadeTime <= 0.0f)
-        //    {
-        //        Respawn();
-        //    }
-        //    else
-        //    {
-        //        fadeTime -= Time.deltaTime;
-        //    }
-        //}
 	}
 
     public void FadeOut()

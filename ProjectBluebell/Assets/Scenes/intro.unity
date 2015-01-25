@@ -83,7 +83,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1780519056}
   - 114: {fileID: 1780519057}
-  - 114: {fileID: 1780519058}
   m_Layer: 0
   m_Name: TextAnimator
   m_TagString: Untagged
@@ -173,19 +172,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
---- !u!114 &1780519058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1780519055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59142b90742e6d142bfd1ed336333a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTime: 5
+  gameScene: game
 --- !u!1 &1889918381
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +185,7 @@ GameObject:
   - 92: {fileID: 1889918384}
   - 124: {fileID: 1889918383}
   - 81: {fileID: 1889918382}
+  - 114: {fileID: 1889918387}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -235,7 +223,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .0705882385, g: .0666666701, b: .0784313753, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -270,3 +258,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1889918387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889918381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59142b90742e6d142bfd1ed336333a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTime: 5
+  fadeInOnStart: 1
