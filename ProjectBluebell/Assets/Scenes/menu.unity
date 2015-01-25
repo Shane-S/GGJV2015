@@ -308,7 +308,7 @@ MonoBehaviour:
   currentLevel: 0
   levels:
   - veggies:
-    - {fileID: 135148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
+    - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
     veggiesToWin: 30
     hungerInterval: 2
     hungerIncreasePerTick: 5
