@@ -8,7 +8,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
     private int updateCounter;
     private bool isAnimating;
     private GameObject[] curVeggies;
-    public AudioClip[] plantingClips;
+    public AudioClip[] plantingGoodVegClips;
+    public AudioClip[] plantingBadVegClips;
     private int veggieToPlant;
     private bool veggieIsEvil;
 
@@ -50,7 +51,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     public void PlantVeggie(int veggieIndex, bool isEvil)
     {
-        audio.PlayOneShot(plantingClips[Random.Range(0, plantingClips.Length)]);
+        if (isEvil)
+            audio.PlayOneShot(plantingBadVegClips[Random.Range(0, plantingBadVegClips.Length)]);
+        else
+            audio.PlayOneShot(plantingGoodVegClips[Random.Range(0, plantingGoodVegClips.Length)]);
         veggieToPlant = veggieIndex;
         veggieIsEvil = isEvil;
         Animator a = GameObject.Find("Arm").GetComponent<Animator>();
