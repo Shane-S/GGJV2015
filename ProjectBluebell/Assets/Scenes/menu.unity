@@ -309,7 +309,7 @@ MonoBehaviour:
   levels:
   - veggies:
     - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
-    veggiesToWin: 30
+    veggiesToWin: 3
     hungerInterval: 2
     hungerIncreasePerTick: 5
     cutsceneText: You are a farmer with a plentiful supply of carrots.\nThe world
