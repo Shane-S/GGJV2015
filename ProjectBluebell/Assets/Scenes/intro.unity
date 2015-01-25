@@ -186,6 +186,7 @@ GameObject:
   - 124: {fileID: 1889918383}
   - 81: {fileID: 1889918382}
   - 114: {fileID: 1889918387}
+  - 114: {fileID: 1889918388}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -272,3 +273,16 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTime: 5
   fadeInOnStart: 1
+--- !u!114 &1889918388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889918381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82aa20b3c8158e469e02f0bc8652a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScene: game
+  fadeOut: 1
