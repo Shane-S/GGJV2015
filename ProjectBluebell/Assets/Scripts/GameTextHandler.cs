@@ -78,9 +78,7 @@ public class GameTextHandler : MonoBehaviour
         if (string.Equals(textInput, "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
         {
             Hunger scoreScript = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
-            scoreScript.hunger -= 5;
-            if (scoreScript.hunger < 0) scoreScript.hunger = 0;
-
+            scoreScript.resetHungerTimer();
             PlantCarrot();
             textInput = "";
             return true;

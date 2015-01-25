@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc621d4a87eb694b9a623621a831ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 5
+  increasePerInterval: 5
   hunger: 0
 --- !u!1 &413395550
 GameObject:
