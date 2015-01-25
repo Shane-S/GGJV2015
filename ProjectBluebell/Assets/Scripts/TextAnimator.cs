@@ -17,7 +17,8 @@ public class TextAnimator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        textBank = "You are a farmer with a plentiful supply of carrots.\nThe world is hungry.\nWhat do you do now?\n\nPlant a carrot.";
+        GlobalState gState = GameObject.Find("Globals").GetComponent<GlobalState>();
+        textBank = gState.levels[gState.currentLevel].cutsceneText;
         currentCount = 0f;
         index = 0;
 	}
