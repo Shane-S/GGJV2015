@@ -8,6 +8,7 @@ public class TextInput : MonoBehaviour {
     private string textPrompt;
     private string textInput;
     private string menuOptions;
+    public string gameScene;
     public GUIStyle textInputBoxStyle;
     public GUIStyle menuOptionStyle;
     private float textInputHeight;
@@ -62,16 +63,54 @@ public class TextInput : MonoBehaviour {
     {
         if (string.Equals(textInput, "Play", System.StringComparison.CurrentCultureIgnoreCase))
         {
-            Debug.Log("Play the game.");
+            PlayPressed();
             return true;
         }
         else if (string.Equals(textInput, "Exit", System.StringComparison.CurrentCultureIgnoreCase))
         {
-            Debug.Log("Exit the game.");
+            ExitPressed();
             return true;
         }
         textInput = "";
         return false;
+    }
+
+    void PlayPressed()
+    {
+        CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
+        
+        if (fade != null)
+        {
+            fade.FadeOut(StartGame);
+        }
+        else
+        {
+            Debug.LogWarning("CameraFader not found");
+        }
+    }
+
+    void ExitPressed()
+    {
+        CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
+
+        if (fade != null)
+        {
+            fade.FadeOut(QuitGame);
+        }
+        else
+        {
+            Debug.LogWarning("CameraFader not found");
+        }
+    }
+
+    void StartGame()
+    {
+        Application.LoadLevel(gameScene);
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
     }
 	
 	// Update is called once per frame

@@ -46,7 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CameraFade.cs" />
+     <Compile Include="Assets\Scripts\CameraFader.cs" />
+     <Compile Include="Assets\Scripts\CarrotBehavior.cs" />
+     <Compile Include="Assets\Scripts\GUIDraw.cs" />
+     <Compile Include="Assets\Scripts\PlayerBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\TextInput.cs" />
+     <Compile Include="Assets\Scripts\WorldBehavior.cs" />
      <None Include="Assets\Fonts\generic-mono\OFL.txt" />
      <None Include="Assets\Fonts\anonymous-pro\AnonymousPro-1.002.001\OFL-FAQ.txt" />
      <None Include="Assets\Fonts\Courier Code\Courier Code Read Me.txt" />
