@@ -29,6 +29,8 @@ public class WinTextHandler : MonoBehaviour
     private string cursorChar;
     private int maxStringLength = 50;
 
+    private GlobalState gState;
+
     // Use this for initialization
     void Start()
     {
@@ -188,6 +190,7 @@ public class WinTextHandler : MonoBehaviour
     void StartGame()
     {
         Application.LoadLevel(gameScene);
+        gState = GameObject.Find("Globals").GetComponent<GlobalState>();
     }
 
     void QuitGame()
@@ -246,7 +249,7 @@ public class WinTextHandler : MonoBehaviour
     {
         string input = textInput;
         textInput = "";
-        storyString = GlobalState.playerName += " spent the rest of their life " + input;
+        storyString = gState.playerName += " spent the rest of their life " + input;
         textPrompt = "Play Again? ";
         state = (int)states.playagain;
         hasWon = true;

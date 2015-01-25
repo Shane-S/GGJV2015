@@ -2,7 +2,21 @@
 using System.Collections;
 
 public class GlobalState : MonoBehaviour {
-    public static string playerName = null;
+
+    /// <summary>
+    /// The player's name.
+    /// </summary>
+    public string playerName = null;
+
+    /// <summary>
+    /// The current level.
+    /// </summary>
+    public int currentLevel = 0;
+
+    /// <summary>
+    /// The array of vegetable pictures.
+    /// </summary>
+    public LevelProperties[] levels;
 
 	// Use this for initialization
 	void Start () {
@@ -10,11 +24,17 @@ public class GlobalState : MonoBehaviour {
 	}
 
     void Awake() {
-        DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void reset()
+    {
+        playerName = null;
+        currentLevel = 0;
+    }
 }
