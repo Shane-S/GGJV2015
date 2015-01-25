@@ -41,7 +41,16 @@ public class WinTextHandler : MonoBehaviour
         SetDimensions();
         handled = false;
         hasWon = false;
-        state = (int)states.playagain;
+
+        if (gState.isMaxLevel())
+        {
+            textPrompt = "Main Menu? ";
+            state = (int)states.mainmenu;
+        }
+        else
+        {
+            state = (int)states.playagain;
+        }       
         fading = false;
     }
 
@@ -117,9 +126,19 @@ public class WinTextHandler : MonoBehaviour
                     }
                 case (int)states.mainmenu:
                     {
-                        state = (int)states.playagain;
-                        textPrompt = "Play next level? ";
-                        textInput = "";
+                        if (gState.isMaxLevel())
+                        {
+                            state = (int)states.mainmenu;
+                            textPrompt = "Main Menu? ";
+                            textInput = "";
+                        }
+                        else
+                        {
+                            state = (int)states.playagain;
+                            textPrompt = "Play next level? ";
+                            textInput = "";
+                        }
+                       
                         break;
                     }
                 default:

@@ -44,4 +44,9 @@ public class GlobalState : MonoBehaviour {
         playerName = null;
         currentLevel = 0;
     }
+
+    public bool isMaxLevel()
+    {
+        return currentLevel == maxLevel;
+    }
 }
