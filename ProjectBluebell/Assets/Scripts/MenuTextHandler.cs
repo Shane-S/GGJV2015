@@ -33,6 +33,7 @@ public class MenuTextHandler : MonoBehaviour {
         textInput = "";
         SetDimensions();
         handled = false;
+        GlobalState.playerName = null;
 	}
 
     void SetDimensions()
