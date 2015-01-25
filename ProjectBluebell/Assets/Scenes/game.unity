@@ -163,7 +163,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11416598, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
   m_RootGameObject: {fileID: 1116271595}
   m_IsPrefabParent: 0
@@ -392,7 +393,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404436425}
-  - 114: {fileID: 404436424}
   - 114: {fileID: 404436426}
   m_Layer: 0
   m_Name: ScoreMeter
@@ -401,18 +401,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &404436424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 404436423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf29f67bd19c0e74caca49c1176ce469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadBarTexture: {fileID: 0}
 --- !u!4 &404436425
 Transform:
   m_ObjectHideFlags: 0
@@ -1032,7 +1020,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11433868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
   m_RootGameObject: {fileID: 1901475829}
   m_IsPrefabParent: 0
@@ -1088,7 +1077,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1116271597}
   - 212: {fileID: 1116271596}
-  - 114: {fileID: 1116271598}
+  - 114: {fileID: 1116271599}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -1131,18 +1120,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!114 &1116271598
+--- !u!114 &1116271599
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11416598, guid: 792854bb0a64b914ca0ffa99f67c7e1d,
+  m_PrefabParentObject: {fileID: 11493178, guid: 792854bb0a64b914ca0ffa99f67c7e1d,
     type: 2}
   m_PrefabInternal: {fileID: 10994766}
   m_GameObject: {fileID: 1116271595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71e7301e67ab08488f6a45dc02b0d1f, type: 3}
+  m_Script: {fileID: 11500000, guid: cc66d3283c1bab84381bfefbf4f39ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  validString: Plant a carrot
+  evilVersion: {fileID: 0}
 --- !u!1 &1173477711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1243,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1330856278}
   - 212: {fileID: 1330856277}
-  - 114: {fileID: 1330856276}
+  - 114: {fileID: 1330856279}
   m_Layer: 0
   m_Name: Cauliflower
   m_TagString: Untagged
@@ -1260,18 +1251,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1330856276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11435148, guid: b4beaa019932f194e8e951e4c485210c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1922563865}
-  m_GameObject: {fileID: 1330856275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71e7301e67ab08488f6a45dc02b0d1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1330856277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1307,6 +1286,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+--- !u!114 &1330856279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11446516, guid: b4beaa019932f194e8e951e4c485210c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1922563865}
+  m_GameObject: {fileID: 1330856275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc66d3283c1bab84381bfefbf4f39ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  validString: Plant a cauliflower
+  evilVersion: {fileID: 0}
 --- !u!1 &1411103831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,7 +1858,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1901475832}
   - 212: {fileID: 1901475831}
-  - 114: {fileID: 1901475830}
+  - 114: {fileID: 1901475833}
   m_Layer: 0
   m_Name: Asparagus
   m_TagString: Untagged
@@ -1873,18 +1866,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1901475830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11433868, guid: 0e9c059b51c2d2f408e267be27f453e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 885030041}
-  m_GameObject: {fileID: 1901475829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71e7301e67ab08488f6a45dc02b0d1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1901475831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1920,6 +1901,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!114 &1901475833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11491510, guid: 0e9c059b51c2d2f408e267be27f453e1,
+    type: 2}
+  m_PrefabInternal: {fileID: 885030041}
+  m_GameObject: {fileID: 1901475829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc66d3283c1bab84381bfefbf4f39ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  validString: Plant an asparagus
+  evilVersion: {fileID: 0}
 --- !u!1001 &1922563865
 Prefab:
   m_ObjectHideFlags: 0
@@ -1959,7 +1954,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11435148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
   m_RootGameObject: {fileID: 1330856275}
   m_IsPrefabParent: 0
