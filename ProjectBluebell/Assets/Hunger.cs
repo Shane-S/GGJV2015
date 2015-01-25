@@ -14,14 +14,19 @@ public class Hunger : MonoBehaviour {
     private float increasePerInterval;
 
     /// <summary>
-    /// The current world hunger level.
+    /// The amount by which hunger decreases or a successful plant.
     /// </summary>
-    public float hunger = 0;
+    private float decreaseForSuccess;
 
     /// <summary>
-    /// The number of carrots planted.
+    /// The amount by which hunger increases for an unsuccessful plant.
     /// </summary>
-    public float veggiesPlanted = 0;
+    private float increaseForFailure;
+
+    /// <summary>
+    /// The current world hunger level.
+    /// </summary>
+    public float hunger;
 
     /// <summary>
     /// Time until the next auto-increment.
@@ -38,8 +43,11 @@ public class Hunger : MonoBehaviour {
         GlobalState current = GameObject.Find("Globals").GetComponent<GlobalState>();
         LevelProperties curLevel = current.levels[current.currentLevel];
 
-        interval = curLevel.hungerInterval;
-        increasePerInterval = curLevel.hungerIncreasePerTick;
+        interval = curLevel.timePerTick;
+        increasePerInterval = curLevel.increasePerTick;
+        decreaseForSuccess = 50 / curLevel.veggiesToWin;
+        increaseForFailure = curLevel.increaseOnFailure;
+        hunger = curLevel.startingHunger;
 	}
 	
 	// Update is called once per frame
@@ -55,6 +63,22 @@ public class Hunger : MonoBehaviour {
 			timeToIncrease = 0;
 		}
 	}
+
+    /// <summary>
+    /// Decreases the hunger level when sucessfully planting.
+    /// </summary>
+    public void decreaseHunger()
+    {
+        hunger -= decreaseForSuccess;
+    }
+
+    /// <summary>
+    /// Increases the hunger level when unsucessfully planting.
+    /// </summary>
+    public void increaseHunger()
+    {
+        hunger += increaseForFailure;
+    }
 
     /// <summary>
     /// Stops the hunger timer from ticking (and it can't be restarted).
@@ -77,9 +101,6 @@ public class Hunger : MonoBehaviour {
     /// </summary>
     void OnValidate()
     {
-        veggiesPlanted = 0;
-        interval = Mathf.Clamp(interval, 0.5f, 20);
-        increasePerInterval = Mathf.Clamp(increasePerInterval, 1, 15);
         hunger = Mathf.Clamp(hunger, 0, 100);
     }
 

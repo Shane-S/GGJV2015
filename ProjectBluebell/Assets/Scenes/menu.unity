@@ -309,29 +309,29 @@ MonoBehaviour:
   levels:
   - veggies:
     - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
-    veggiesToWin: 30
-    hungerInterval: 2
-    hungerIncreasePerTick: 5
+    veggiesToWin: 10
+    timePerTick: 3
+    increasePerTick: 2
+    startingHunger: 50
+    increaseOnFailure: 2
     cutsceneText: You are a farmer with a plentiful supply of carrots.\nThe world
       is hungry.\nWhat do you do now?\n\nPlant a carrot.
-    hungerDecreaseInterval: 3
-    hungerIncreaseInterval: 3
   - veggies:
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     veggiesToWin: 35
-    hungerInterval: 2
-    hungerIncreasePerTick: .680000007
+    timePerTick: 3
+    increasePerTick: 5
+    startingHunger: 55
+    increaseOnFailure: 3
     cutsceneText: This is another test.
-    hungerDecreaseInterval: 4
-    hungerIncreaseInterval: 4
   - veggies:
     - {fileID: 135148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
     veggiesToWin: 40
-    hungerInterval: 3
-    hungerIncreasePerTick: 10
+    timePerTick: 3
+    increasePerTick: 5
+    startingHunger: 60
+    increaseOnFailure: 4
     cutsceneText: This is the final test.
-    hungerDecreaseInterval: 5
-    hungerIncreaseInterval: 5
 --- !u!4 &845663145
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowActivationOnStandalone: 0
 --- !u!114 &1281666948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,12 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1281666949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,9 +445,6 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
 --- !u!4 &1281666950
 Transform:
   m_ObjectHideFlags: 0

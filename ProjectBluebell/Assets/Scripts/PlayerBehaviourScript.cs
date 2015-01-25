@@ -53,6 +53,11 @@ public class PlayerBehaviourScript : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="veggieIndex">The index in the level's </param>
+    /// <param name="isEvil"></param>
     public void PlantVeggie(int veggieIndex, bool isEvil)
     {
         veggieToPlant = veggieIndex;
