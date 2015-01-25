@@ -6,17 +6,20 @@ public class GUIDraw : MonoBehaviour
 
     public Vector2 position = new Vector2(16, 16); // The screen position of the worldHunger bar
     public Texture2D meterFill;                    // The fill for the worldHunger bar
-
+    public GUIStyle hungerFontStyle;
     public int borderDimensions; // The height and width of the worldHunger bar border (in pixels)
 
     private Rect meterDims; // Actual dimensions of worldHunger meter (stretches w/ screen)
     private GUIStyle fillStyle;
     private GUIStyle outsideStyle;
 
+    private Hunger hungerLevel;
+
     private float fillPercent = 0.5f;
 
-    void Start()
+    void Awake()
     {
+        hungerLevel = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
         meterDims = new Rect(position.x, position.y, Screen.width - position.x * 2, METER_HEIGHT);
 
         fillStyle = new GUIStyle();
@@ -37,9 +40,9 @@ public class GUIDraw : MonoBehaviour
     /// </summary>
     void DrawStarvationMeterText()
     {
-        GameObject parent = GameObject.Find("ScoreMeter");
-        float worldHunger = parent.GetComponent<Hunger>().hunger;
-        GUI.Label(meterDims, "Starvation level: " + (int)worldHunger);
+        GUI.Label(meterDims, "Starvation level: " + (int)hungerLevel.hunger + '\n' +
+                             "Carrots planted: " + hungerLevel.carrotsPlanted,
+                             hungerFontStyle);
     }
 
     /// <summary>
