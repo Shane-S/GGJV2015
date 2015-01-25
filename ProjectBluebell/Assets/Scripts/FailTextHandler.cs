@@ -127,6 +127,7 @@ public class FailTextHandler : MonoBehaviour {
             return true;
         }
         textInput = "";
+        showFeedback();
         return false;
     }
 
@@ -247,7 +248,6 @@ public class FailTextHandler : MonoBehaviour {
             if (string.Equals(textInput, s, System.StringComparison.CurrentCultureIgnoreCase))
                 return true;
         }
-        showFeedback();
         return false;
     }
 }

@@ -377,23 +377,23 @@ MonoBehaviour:
     cutsceneText: "You are a farmer with a plentiful supply of carrots.\r\nThe world
       is hungry.\r\nWhat do you do now?\r\n\r\nPlant a carrot."
   - veggies:
+    - {fileID: 135148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
+    veggiesToWin: 17
+    timePerTick: 3
+    increasePerTick: 5
+    startingHunger: 50
+    increaseOnFailure: 2
+    cutsceneText: "You now have a plentiful supply of cauliflower.\r\nThe world hunger
+      is almost history.\r\nWhat do you do now?\r\n\r\nPlant a cauliflower."
+  - veggies:
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     veggiesToWin: 20
     timePerTick: 3
-    increasePerTick: 8
+    increasePerTick: 5
     startingHunger: 50
-    increaseOnFailure: 2
+    increaseOnFailure: 3
     cutsceneText: "You now have a plentiful supply of asparagus.\r\nThe world is still
-      hungry.\r\nWhat do you do now?\r\n\r\nPlant an asparagus."
-  - veggies:
-    - {fileID: 135148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
-    veggiesToWin: 25
-    timePerTick: 3
-    increasePerTick: 13
-    startingHunger: 50
-    increaseOnFailure: 4
-    cutsceneText: "You now have a plentiful supply of cauliflower.\r\nThe world hunger
-      is almost history.\r\nWhat do you do now?\r\n\r\nPlant a cauliflower."
+      hungry.\r\nWhat do you do now?\r\n\r\nPlant asparagus."
 --- !u!4 &845663145
 Transform:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc66d3283c1bab84381bfefbf4f39ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validString: Plant an asparagus
+  validString: Plant asparagus
   evilVersion: {fileID: 21300000, guid: 235a3f854bf55d14eb41ce5acd2cb110, type: 3}
 --- !u!212 &21233868
 SpriteRenderer:

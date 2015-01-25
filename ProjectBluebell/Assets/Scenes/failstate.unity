@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c6aa968ebcbff4a8aa18a2da77c9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: game
+  gameScene: intro
   menuScene: menu
   textInputBoxStyle:
     m_Name: 
