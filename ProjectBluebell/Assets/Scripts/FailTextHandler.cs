@@ -18,7 +18,7 @@ public class FailTextHandler : MonoBehaviour {
     private bool handled;
     private Event previous;
     public GameObject carrot;
-    private int xPos = 3;
+    private float xPos = -5.5f;
 
     // Use this for initialization
     void Start()
@@ -136,7 +136,7 @@ public class FailTextHandler : MonoBehaviour {
 
     void CarrotPressed()
     {
-        Instantiate(carrot, new Vector3(xPos, 0, 0), new Quaternion());
+        Instantiate(carrot, new Vector3(xPos, -1.25f, 0), new Quaternion());
         if(xPos <= 15)
             xPos += 1;
     }
