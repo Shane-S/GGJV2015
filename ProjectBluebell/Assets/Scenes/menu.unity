@@ -369,7 +369,6 @@ MonoBehaviour:
   levels:
   - veggies:
     - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
-<<<<<<< HEAD
     veggiesToWin: 2
     timePerTick: 3
     increasePerTick: 2
@@ -377,15 +376,6 @@ MonoBehaviour:
     increaseOnFailure: 2
     cutsceneText: "You are a farmer with a plentiful supply of carrots.\r\nThe world
       is hungry.\r\nWhat do you do now?\r\n\r\nPlant a carrot."
-=======
-    veggiesToWin: 3
-    hungerInterval: .100000001
-    hungerIncreasePerTick: 100
-    cutsceneText: You are a farmer with a plentiful supply of carrots.\nThe world
-      is hungry.\nWhat do you do now?\n\nPlant a carrot.
-    hungerDecreaseInterval: 3
-    hungerIncreaseInterval: 3
->>>>>>> f65416e7acdae2763a4a15a05beca361dade906c
   - veggies:
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     veggiesToWin: 2
