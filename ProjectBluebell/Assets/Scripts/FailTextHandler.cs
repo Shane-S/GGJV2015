@@ -83,7 +83,7 @@ public class FailTextHandler : MonoBehaviour {
         }
         else if (checkValidity(exit))
         {
-            ExitPressed();
+            MainMenuPressed();
             textInput = "";
             return true;
         }
@@ -165,6 +165,7 @@ public class FailTextHandler : MonoBehaviour {
 
     void MainMenu()
     {
+        Destroy(GameObject.Find("Globals"));
         Application.LoadLevel(menuScene);
     }
 

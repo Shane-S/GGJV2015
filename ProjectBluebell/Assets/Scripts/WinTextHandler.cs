@@ -21,7 +21,7 @@ public class WinTextHandler : MonoBehaviour
     private bool hasWon;
     private int state;
     private bool fading;
-    private enum states { playagain, mainmenu, exit, none };
+    private enum states { playagain, mainmenu, none };
 
     // Blinking Cursor
     private float m_TimeStamp;
@@ -96,11 +96,6 @@ public class WinTextHandler : MonoBehaviour
                         MainMenuPressed();
                         break;
                     }
-                case (int)states.exit:
-                    {
-                        ExitPressed();
-                        break;
-                    }
                 default:
                     {
                         break;
@@ -122,14 +117,9 @@ public class WinTextHandler : MonoBehaviour
                     }
                 case (int)states.mainmenu:
                     {
-                        state = (int)states.exit;
-                        textPrompt = "Exit? ";
+                        state = (int)states.playagain;
+                        textPrompt = "Play next level? ";
                         textInput = "";
-                        break;
-                    }
-                case (int)states.exit:
-                    {
-                        ExitPressed();
                         break;
                     }
                 default:
@@ -203,6 +193,7 @@ public class WinTextHandler : MonoBehaviour
 
     void MainMenu()
     {
+        Destroy(GameObject.Find("Globals"));
         Application.LoadLevel(menuScene);
     }
 
