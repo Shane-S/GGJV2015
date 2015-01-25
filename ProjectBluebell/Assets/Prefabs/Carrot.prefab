@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 428894}
   - 212: {fileID: 21228894}
-  - 114: {fileID: 11416598}
+  - 114: {fileID: 11493178}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11416598
+--- !u!114 &11493178
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,9 +37,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 128894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71e7301e67ab08488f6a45dc02b0d1f, type: 3}
+  m_Script: {fileID: 11500000, guid: cc66d3283c1bab84381bfefbf4f39ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  validString: Plant a carrot
+  evilVersion: {fileID: 2800000, guid: 92ebafe2cea27fe40870d6adc5ca3af9, type: 3}
 --- !u!212 &21228894
 SpriteRenderer:
   m_ObjectHideFlags: 1

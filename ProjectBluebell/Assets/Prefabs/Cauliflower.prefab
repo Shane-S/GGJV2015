@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 435148}
   - 212: {fileID: 21235148}
-  - 114: {fileID: 11435148}
+  - 114: {fileID: 11446516}
   m_Layer: 0
   m_Name: Cauliflower
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11435148
+--- !u!114 &11446516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,9 +37,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 135148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71e7301e67ab08488f6a45dc02b0d1f, type: 3}
+  m_Script: {fileID: 11500000, guid: cc66d3283c1bab84381bfefbf4f39ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  validString: Plant a cauliflower
+  evilVersion: {fileID: 2800000, guid: 9c51af44b033f2e4e8b04943ee689dd3, type: 3}
 --- !u!212 &21235148
 SpriteRenderer:
   m_ObjectHideFlags: 1

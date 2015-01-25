@@ -55,7 +55,7 @@ public class GameStateBehaviour : MonoBehaviour
     void getNextVeggie()
     {
         selectedVeggie = random.Next(0, thisLevel.veggies.Length);
-        selectedValid = "Plant a " + thisLevel.veggies[selectedVeggie].gameObject.name;
+        selectedValid = thisLevel.veggies[selectedVeggie].GetComponent<VeggieBehaviour>().validString;
     }
 
     /// <summary>
@@ -66,11 +66,15 @@ public class GameStateBehaviour : MonoBehaviour
         if (string.Equals(textInput.getInput(), selectedValid, System.StringComparison.CurrentCultureIgnoreCase))
         {
             hungerLevel.resetHungerTimer();
-            player.PlantVeggie(selectedVeggie);
+            player.PlantVeggie(selectedVeggie, false);
             hungerLevel.veggiesPlanted++;
             getNextVeggie();
         }
-        else textInput.showFeedback();
+        else
+        {
+            player.PlantVeggie(selectedVeggie, true);
+            textInput.showFeedback();
+        }
 
         textInput.clearInput();
     }
