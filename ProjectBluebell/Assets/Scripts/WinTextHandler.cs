@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FailTextHandler : MonoBehaviour {
+public class WinTextHandler : MonoBehaviour
+{
 
     private char character;
     private string textPrompt;
     private string textInput;
     private string storyString;
-    public string gameScene; 
+    public string gameScene;
     public string menuScene;
     public GUIStyle textInputBoxStyle;
     public GUIStyle menuOptionStyle;
@@ -17,17 +18,22 @@ public class FailTextHandler : MonoBehaviour {
     private float textMenuOptionsWidth;
     private bool handled;
     private Event previous;
-    public GameObject carrot;
-    private float xPos = -5.5f;
+    private bool hasWon;
+    private int state;
+    private bool fading;
+    private enum states { playagain, mainmenu, exit, none };
 
     // Use this for initialization
     void Start()
     {
-        storyString = "You failed to end world hunger.";
-        textPrompt = "What do you do now? ";
+        storyString = "You successfully saved humanity.";
+        textPrompt = "What do you want to do now? ";
         textInput = "";
         SetDimensions();
         handled = false;
+        hasWon = false;
+        state = (int)states.none;
+        fading = false;
     }
 
     void SetDimensions()
@@ -64,36 +70,71 @@ public class FailTextHandler : MonoBehaviour {
 
     bool checkInputValidity()
     {
-        if (string.Equals(textInput, "Play Again", System.StringComparison.CurrentCultureIgnoreCase))
+        if (string.Equals(textInput, "Yes", System.StringComparison.CurrentCultureIgnoreCase))
         {
-            PlayPressed();
+            switch (state)
+            {
+                case (int)states.playagain:
+                    {
+                        PlayPressed();
+                        break;
+                    }
+                case (int)states.mainmenu:
+                    {
+                        MainMenuPressed();
+                        break;
+                    }
+                case (int)states.exit:
+                    {
+                        ExitPressed();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
             textInput = "";
             return true;
         }
-        else if (string.Equals(textInput, "Exit", System.StringComparison.CurrentCultureIgnoreCase))
+        else if (string.Equals(textInput, "No", System.StringComparison.CurrentCultureIgnoreCase))
         {
-            ExitPressed();
-            textInput = "";
+            switch (state)
+            {
+                case (int)states.playagain:
+                    {
+                        state = (int)states.mainmenu;
+                        textPrompt = "Main Menu? ";
+                        textInput = "";
+                        break;
+                    }
+                case (int)states.mainmenu:
+                    {
+                        state = (int)states.exit;
+                        textPrompt = "Exit? ";
+                        textInput = "";
+                        break;
+                    }
+                case (int)states.exit:
+                    {
+                        ExitPressed();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
             return true;
         }
-        else if (string.Equals(textInput, "Main Menu", System.StringComparison.CurrentCultureIgnoreCase))
-        {
-            MainMenuPressed();
-            textInput = "";
-            return true;
-        }
-        else if (string.Equals(textInput, "Plant A Carrot", System.StringComparison.CurrentCultureIgnoreCase))
-        {
-            CarrotPressed();
-            textInput = "";
-            return true;
-        }
+       
         textInput = "";
         return false;
     }
 
     void PlayPressed()
     {
+        fading = true;
         CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
 
         if (fade != null)
@@ -108,6 +149,7 @@ public class FailTextHandler : MonoBehaviour {
 
     void ExitPressed()
     {
+        fading = true;
         CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
 
         if (fade != null)
@@ -122,6 +164,7 @@ public class FailTextHandler : MonoBehaviour {
 
     void MainMenuPressed()
     {
+        fading = true;
         CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
 
         if (fade != null)
@@ -132,13 +175,6 @@ public class FailTextHandler : MonoBehaviour {
         {
             Debug.LogWarning("CameraFader not found");
         }
-    }
-
-    void CarrotPressed()
-    {
-        Instantiate(carrot, new Vector3(xPos, -1.25f, 0), new Quaternion());
-        if(xPos <= 15)
-            xPos += 1;
     }
 
 
@@ -160,14 +196,31 @@ public class FailTextHandler : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if(!fading)
         {
-            if (textInput.Length - 1 >= 0)
-                textInput = textInput.Remove(textInput.Length - 1);
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                if (textInput.Length - 1 >= 0)
+                    textInput = textInput.Remove(textInput.Length - 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                if (!hasWon)
+                    ShowWinState();
+                else
+                    checkInputValidity();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            checkInputValidity();
-        }
+        
+    }
+
+    void ShowWinState()
+    {
+        string input = textInput;
+        textInput = "";
+        storyString = GlobalState.playerName += " spent the rest of thier life " + input;
+        textPrompt = "Play Again? ";
+        state = (int)states.playagain;
+        hasWon = true;
     }
 }

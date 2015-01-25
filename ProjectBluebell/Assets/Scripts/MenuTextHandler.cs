@@ -22,7 +22,7 @@ public class MenuTextHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         menuOptions = "|  Play  |  Exit  |";
-        textPrompt = "What do you want to do? ";
+        textPrompt = "What do you do now? ";
         namePrompt = "What is your name? ";
         textInput = "";
         SetDimensions();

@@ -17,8 +17,6 @@ public class Hunger : MonoBehaviour {
     /// The current world hunger level.
     /// </summary>
     public float hunger = 0;
-    public bool fading;
-
 
     /// <summary>
     /// Time until the next auto-increment.
@@ -32,7 +30,6 @@ public class Hunger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        fading = false;
 	}
 	
 	// Update is called once per frame
