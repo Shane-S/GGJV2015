@@ -18,15 +18,30 @@ public class GameStateBehaviour : MonoBehaviour {
     private GameTextHandler textInput;    // Reference to the text box
     private PlayerBehaviourScript player; // Reference to the player
 
+    private int updateCounter;
+    private bool isAnimating;
+   
 	void Start () {
         hungerLevel = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
         textInput = GameObject.Find("GUIManager").GetComponent<GameTextHandler>();
         player = GameObject.Find("Player").GetComponent<PlayerBehaviourScript>();
+        updateCounter = 0;
+        isAnimating = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(isAnimating)
+        {
+            updateCounter++;
+            if(updateCounter >= 25)
+            {
+                Animator a = GameObject.Find("Arm").GetComponent<Animator>();
+                a.SetBool("planting", false);
+            }
+        }
+
         if (!finished)
         {
             checkForEndGame();
@@ -41,6 +56,10 @@ public class GameStateBehaviour : MonoBehaviour {
         {
             hungerLevel.resetHungerTimer();
             player.PlantCarrot();
+            Animator a = GameObject.Find("Arm").GetComponent<Animator>();
+            a.SetBool("planting", true);
+            isAnimating = true;
+            updateCounter = 0;
             hungerLevel.carrotsPlanted++;
         }
         else textInput.showFeedback();
