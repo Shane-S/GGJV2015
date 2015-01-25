@@ -14,13 +14,16 @@ public class TextInput : MonoBehaviour {
     private float textInputWidth;
     private float textMenuOptionsHeight;
     private float textMenuOptionsWidth;
+    private bool handled;
+    private Event previous;
 
 	// Use this for initialization
 	void Start () {
-        menuOptions = "| Play | Exit |";
+        menuOptions = "|  Play  |  Exit  |";
         textPrompt = "What do you want to do? ";
         textInput = "";
         SetDimensions();
+        handled = false;
 	}
 
     void SetDimensions()
@@ -34,16 +37,21 @@ public class TextInput : MonoBehaviour {
     void OnGUI()
     {
         Event e = Event.current;
+        
+        if (e.isKey)
+        {
 
-        if (e.keyCode == KeyCode.KeypadEnter || e.keyCode == KeyCode.Return)
-        {
-            Debug.Log("You pressed enter...");
-            checkInputValidity();
-        }
-        else if (e.isKey)
-        {
-            character = e.character;
-            textInput += character;
+            Debug.Log("char keycode: " + e.keyCode + " character: " + e.character);
+
+            if (e.keyCode == KeyCode.None 
+                && e.character != '\n'
+                && e.character != '\t')
+            {
+                character = e.character;
+                textInput += character;
+            }
+
+            e.Use();
         }
 
         GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), menuOptions, menuOptionStyle);
@@ -52,20 +60,31 @@ public class TextInput : MonoBehaviour {
 
     bool checkInputValidity()
     {
-        if (string.Equals(textInput, "Play"))
+        if (string.Equals(textInput, "Play", System.StringComparison.CurrentCultureIgnoreCase))
         {
             Debug.Log("Play the game.");
             return true;
         }
-        else if (string.Equals(textInput, "Exit"))
+        else if (string.Equals(textInput, "Exit", System.StringComparison.CurrentCultureIgnoreCase))
         {
             Debug.Log("Exit the game.");
             return true;
         }
+        textInput = "";
         return false;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            if (textInput.Length - 1 >= 0)
+                textInput = textInput.Remove(textInput.Length-1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            checkInputValidity();
+        }
 	}
 }

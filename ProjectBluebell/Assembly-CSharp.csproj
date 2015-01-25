@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\TextInput.cs" />
+     <None Include="Assets\Fonts\generic-mono\OFL.txt" />
+     <None Include="Assets\Fonts\anonymous-pro\AnonymousPro-1.002.001\OFL-FAQ.txt" />
+     <None Include="Assets\Fonts\Courier Code\Courier Code Read Me.txt" />
+     <None Include="Assets\Fonts\anonymous-pro\AnonymousPro-1.002.001\README.txt" />
+     <None Include="Assets\Fonts\anonymous-pro\AnonymousPro-1.002.001\OFL.txt" />
+     <None Include="Assets\Fonts\anonymous-pro\AnonymousPro-1.002.001\FONTLOG.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
