@@ -17,6 +17,8 @@ public class Hunger : MonoBehaviour {
     /// The current world hunger level.
     /// </summary>
     public float hunger = 0;
+    public string failState;
+    public bool fading;
 
 
     // Time until the next auto-increment
@@ -24,17 +26,43 @@ public class Hunger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        fading = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        timeToIncrease += Time.deltaTime;
-        if (timeToIncrease >= interval)
+        if (!fading)
         {
-            hunger += increasePerInterval;
-            timeToIncrease = 0;
-        }      
+			timeToIncrease += Time.deltaTime;
+			if (timeToIncrease >= interval)
+			{
+				hunger += increasePerInterval;
+				timeToIncrease = 0;
+			}     
+		
+            if (hunger < 100)
+                hunger += 0.05f;
+
+            if (hunger >= 100)
+            {
+                CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
+
+                if (fade != null)
+                {
+                    fading = true;
+                    fade.FadeOut(FailGame);
+                }
+                else
+                {
+                    Debug.LogWarning("CameraFader not found");
+                }
+            }
+        }
+	}
+
+    void FailGame()
+    {
+        Application.LoadLevel(failState); 
 	}
 
     /// <summary>
