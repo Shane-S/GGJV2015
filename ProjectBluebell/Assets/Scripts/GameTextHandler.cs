@@ -28,7 +28,7 @@ public class GameTextHandler : MonoBehaviour
     private float m_TimeStamp;
     private bool cursor = false;
     private string cursorChar;
-    private int maxStringLength = 124;
+    private int maxStringLength = 50;
 
     // Use this for initialization
     void Start()
@@ -65,7 +65,8 @@ public class GameTextHandler : MonoBehaviour
 
             if (e.keyCode == KeyCode.None
                 && e.character != '\n'
-                && e.character != '\t')
+                && e.character != '\t'
+                && (textPrompt + textInput).Length < maxStringLength)
             {
                 character = e.character;
                 textInput += character;

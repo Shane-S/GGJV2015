@@ -20,6 +20,12 @@ public class FailTextHandler : MonoBehaviour {
     public GameObject carrot;
     private float xPos = -5.5f;
 
+    // Blinking Cursor
+    private float m_TimeStamp;
+    private bool cursor = false;
+    private string cursorChar;
+    private int maxStringLength = 50;
+
     // Use this for initialization
     void Start()
     {
@@ -49,7 +55,8 @@ public class FailTextHandler : MonoBehaviour {
 
             if (e.keyCode == KeyCode.None
                 && e.character != '\n'
-                && e.character != '\t')
+                && e.character != '\t'
+                && (textPrompt + textInput).Length < maxStringLength)
             {
                 character = e.character;
                 textInput += character;
@@ -59,7 +66,7 @@ public class FailTextHandler : MonoBehaviour {
         }
 
         GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), storyString, menuOptionStyle);
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput, textInputBoxStyle);
+        GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput + cursorChar, textInputBoxStyle);
     }
 
     bool checkInputValidity()
@@ -168,6 +175,27 @@ public class FailTextHandler : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             checkInputValidity();
+        }
+
+        if (Time.time - m_TimeStamp >= 0.5)
+        {
+            m_TimeStamp = Time.time;
+            if (cursor == false)
+            {
+                cursor = true;
+                if ((textPrompt + textInput).Length < maxStringLength)
+                {
+                    cursorChar += "_";
+                }
+            }
+            else
+            {
+                cursor = false;
+                if (cursorChar.Length != 0)
+                {
+                    cursorChar = cursorChar.Substring(0, cursorChar.Length - 1);
+                }
+            }
         }
     }
 }
