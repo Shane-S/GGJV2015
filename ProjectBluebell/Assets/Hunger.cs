@@ -6,12 +6,12 @@ public class Hunger : MonoBehaviour {
     /// <summary>
     /// The time (in seconds) for the hunger count to increase.
     /// </summary>
-    public float interval;
+    private float interval;
     
     /// <summary>
     /// The amount by which hunger increases per auto-increment interval.
     /// </summary>
-    public float increasePerInterval;
+    private float increasePerInterval;
 
     /// <summary>
     /// The current world hunger level.
@@ -21,7 +21,7 @@ public class Hunger : MonoBehaviour {
     /// <summary>
     /// The number of carrots planted.
     /// </summary>
-    public float carrotsPlanted = 0;
+    public float veggiesPlanted = 0;
 
     /// <summary>
     /// Time until the next auto-increment.
@@ -35,6 +35,11 @@ public class Hunger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        GlobalState current = GameObject.Find("Globals").GetComponent<GlobalState>();
+        LevelProperties curLevel = current.levels[current.currentLevel];
+
+        interval = curLevel.hungerInterval;
+        increasePerInterval = curLevel.hungerIncreasePerTick;
 	}
 	
 	// Update is called once per frame
@@ -48,7 +53,7 @@ public class Hunger : MonoBehaviour {
 			hunger += increasePerInterval;
             hunger = hunger > 100 ? 100 : hunger;
 			timeToIncrease = 0;
-		}     
+		}
 	}
 
     /// <summary>
@@ -72,7 +77,7 @@ public class Hunger : MonoBehaviour {
     /// </summary>
     void OnValidate()
     {
-        carrotsPlanted = 0;
+        veggiesPlanted = 0;
         interval = Mathf.Clamp(interval, 0.5f, 20);
         increasePerInterval = Mathf.Clamp(increasePerInterval, 1, 15);
         hunger = Mathf.Clamp(hunger, 0, 100);

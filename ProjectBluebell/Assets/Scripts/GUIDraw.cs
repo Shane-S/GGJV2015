@@ -14,12 +14,16 @@ public class GUIDraw : MonoBehaviour
     private GUIStyle outsideStyle;
 
     private Hunger hungerLevel;
+    private GlobalState gState;
+    private GameStateBehaviour curState;
 
     private float fillPercent = 0.5f;
 
     void Awake()
     {
         hungerLevel = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
+        gState = GameObject.Find("Globals").GetComponent<GlobalState>();
+        curState = GameObject.Find("GameState").GetComponent<GameStateBehaviour>();
         meterDims = new Rect(position.x, position.y, Screen.width - position.x * 2, METER_HEIGHT);
 
         fillStyle = new GUIStyle();
@@ -32,7 +36,6 @@ public class GUIDraw : MonoBehaviour
     void OnGUI()
     {
         DrawStarvationMeterText();
-        //DrawStarvationMeter();
     }
 
     /// <summary>
@@ -40,13 +43,16 @@ public class GUIDraw : MonoBehaviour
     /// </summary>
     void DrawStarvationMeterText()
     {
+        string curVeggie = gState.levels[gState.currentLevel].veggies[curState.selectedVeggie].name;
         GUI.Label(meterDims, "Starvation level: " + (int)hungerLevel.hunger + '\n' +
-                             "Carrots planted: " + hungerLevel.carrotsPlanted,
+                             "Veggies planted: " + hungerLevel.veggiesPlanted + '\n' +
+                             "Current level: " + (gState.currentLevel + 1) + '\n' + 
+                             "Current veggie: " + curVeggie,
                              hungerFontStyle);
     }
 
     /// <summary>
-    /// Draws the worldHunger meter.
+    /// Draws the world hunger meter.
     /// </summary>
     void DrawStarvationMeter()
     {

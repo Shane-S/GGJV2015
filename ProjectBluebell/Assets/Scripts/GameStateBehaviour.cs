@@ -1,47 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameStateBehaviour : MonoBehaviour {
+public class GameStateBehaviour : MonoBehaviour
+{
+    #region Possible Game States
     public const int NOT_FINISHED = -1;
     public const int LOST = 0;
     public const int WON = 1;
-
+    #endregion
+    #region Current Game State
     private bool finished = false;
     private int result = -1;
-
+    #endregion
+    #region End Scenes
     public string failState;
     public string winState;
-
-    public int carrotsToWin = 75;
-
+    #endregion
+    #region References to Other Components
     private Hunger hungerLevel;           // Reference to the hunger component in ScoreMeter
     private GameTextHandler textInput;    // Reference to the text box
     private PlayerBehaviourScript player; // Reference to the player
+    private GlobalState globals;          // Reference to the script with level & prefab info
+    #endregion
+    public int selectedVeggie;
+    private LevelProperties thisLevel;
+    private System.Random random;
+    private string selectedValid;
 
-    private int updateCounter;
-    private bool isAnimating;
-   
-	void Start () {
+    void Start () {
         hungerLevel = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
         textInput = GameObject.Find("GUIManager").GetComponent<GameTextHandler>();
         player = GameObject.Find("Player").GetComponent<PlayerBehaviourScript>();
-        updateCounter = 0;
-        isAnimating = false;
+        globals = GameObject.Find("Globals").GetComponent<GlobalState>();
+
+        random = new System.Random();
+        thisLevel = globals.levels[globals.currentLevel];
+        getNextVeggie();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(isAnimating)
-        {
-            updateCounter++;
-            if(updateCounter >= 25)
-            {
-                Animator a = GameObject.Find("Arm").GetComponent<Animator>();
-                a.SetBool("planting", false);
-            }
-        }
-
         if (!finished)
         {
             checkForEndGame();
@@ -50,33 +49,46 @@ public class GameStateBehaviour : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// Selects the next vegetable to be displayed.
+    /// </summary>
+    void getNextVeggie()
+    {
+        selectedVeggie = random.Next(0, thisLevel.veggies.Length);
+        selectedValid = "Plant a " + thisLevel.veggies[selectedVeggie].gameObject.name;
+    }
+
+    /// <summary>
+    /// Checks whether the input was a valid string and tells the player to plant the appropriate vegetable.
+    /// </summary>
     void checkInput()
     {
-        if (string.Equals(textInput.getInput(), "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
+        if (string.Equals(textInput.getInput(), selectedValid, System.StringComparison.CurrentCultureIgnoreCase))
         {
             hungerLevel.resetHungerTimer();
-            player.PlantCarrot();
-            Animator a = GameObject.Find("Arm").GetComponent<Animator>();
-            a.SetBool("planting", true);
-            isAnimating = true;
-            updateCounter = 0;
-            hungerLevel.carrotsPlanted++;
+            player.PlantVeggie(selectedVeggie);
+            hungerLevel.veggiesPlanted++;
+            getNextVeggie();
         }
         else textInput.showFeedback();
 
         textInput.clearInput();
     }
 
+    /// <summary>
+    /// Checks whether the win or lose condition has happened and transitions to the appropriate
+    /// state if so.
+    /// </summary>
     void checkForEndGame()
     {
-        finished = (hungerLevel.carrotsPlanted == carrotsToWin) || (hungerLevel.hunger >= 100);
+        finished = (hungerLevel.veggiesPlanted == thisLevel.veggiesToWin) || (hungerLevel.hunger >= 100);
 
         if(finished)
         {
             CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
             hungerLevel.stopHungerTimer();
 
-            if (hungerLevel.carrotsPlanted == carrotsToWin)
+            if (hungerLevel.veggiesPlanted == thisLevel.veggiesToWin)
             {
                 result = WON;
                 fade.FadeOut(WinGame);
