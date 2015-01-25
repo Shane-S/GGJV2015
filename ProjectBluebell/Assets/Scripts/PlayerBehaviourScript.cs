@@ -8,6 +8,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     private int updateCounter;
     private bool isAnimating;
     private GameObject[] curVeggies;
+    public AudioClip[] plantingClips;
     private int veggieToPlant;
 
 	// Use this for initialization
@@ -38,6 +39,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     public void PlantVeggie(int veggieIndex)
     {
+        audio.PlayOneShot(plantingClips[Random.Range(0, plantingClips.Length)]);
         veggieToPlant = veggieIndex;
         Animator a = GameObject.Find("Arm").GetComponent<Animator>();
         a.SetBool("planting", true);

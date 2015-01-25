@@ -2,69 +2,23 @@
 using System.Collections;
 public class GUIDraw : MonoBehaviour
 {
-    private static float METER_HEIGHT = 30f;
-
-    public Vector2 position = new Vector2(16, 16); // The screen position of the worldHunger bar
-    public Texture2D meterFill;                    // The fill for the worldHunger bar
-    public GUIStyle hungerFontStyle;
-    public int borderDimensions; // The height and width of the worldHunger bar border (in pixels)
-
-    private Rect meterDims; // Actual dimensions of worldHunger meter (stretches w/ screen)
-    private GUIStyle fillStyle;
-    private GUIStyle outsideStyle;
-
-    private Hunger hungerLevel;
-    private GlobalState gState;
-    private GameStateBehaviour curState;
-
-    private float fillPercent = 0.5f;
-
-    void Awake()
-    {
-        hungerLevel = GameObject.Find("ScoreMeter").GetComponent<Hunger>();
-        gState = GameObject.Find("Globals").GetComponent<GlobalState>();
-        curState = GameObject.Find("GameState").GetComponent<GameStateBehaviour>();
-        meterDims = new Rect(position.x, position.y, Screen.width - position.x * 2, METER_HEIGHT);
-
-        fillStyle = new GUIStyle();
-        fillStyle.border = new RectOffset(0, 0, 0, 0);
-
-        outsideStyle = new GUIStyle();
-        outsideStyle.border = new RectOffset(borderDimensions, borderDimensions, borderDimensions, borderDimensions);
-    }
-
+    private float loadBarProgress = 0.0f;
+    private const float loadBarSpeed = 0.25f;
+    public Texture loadBarTexture = null;
     void OnGUI()
     {
-        DrawStarvationMeterText();
+        //Draw loading bar with offset texture coordinates
+        GUI.DrawTextureWithTexCoords(new Rect(Screen.width * 0.1f, Screen.height * 0.05f, Screen.width * 0.8f, Screen.height * 0.05f), loadBarTexture, new Rect(loadBarProgress, 0.0f, 1.0f, 1.0f), false);
     }
-
-    /// <summary>
-    /// Shows the score as text (for now).
-    /// </summary>
-    void DrawStarvationMeterText()
+    // Use this for initialization
+    void Start()
     {
-        string curVeggie = gState.levels[gState.currentLevel].veggies[curState.selectedVeggie].name;
-        GUI.Label(meterDims, "Starvation level: " + (int)hungerLevel.hunger + '\n' +
-                             "Veggies planted: " + hungerLevel.veggiesPlanted + '\n' +
-                             "Current level: " + (gState.currentLevel + 1) + '\n' + 
-                             "Current veggie: " + curVeggie,
-                             hungerFontStyle);
     }
-
-    /// <summary>
-    /// Draws the world hunger meter.
-    /// </summary>
-    void DrawStarvationMeter()
+    // Update is called once per frame
+    void Update()
     {
-        GUI.BeginGroup(meterDims);
-            GUI.Box(new Rect(0, 0, meterDims.width, meterDims.height), GUIContent.none, outsideStyle);
-
-            // draw the filled-in part:
-            GUI.BeginGroup(new Rect(0, 0, 500, meterDims.height));
-                GUI.Box(new Rect(borderDimensions, borderDimensions,
-                                 meterDims.width, meterDims.height - borderDimensions * 2),
-                                 meterFill, fillStyle);
-            GUI.EndGroup();
-        GUI.EndGroup();
+        //Move the bar along; keep it's position between zero and one for best float point precision
+        loadBarProgress += Time.deltaTime * loadBarSpeed;
+        if (loadBarProgress >= 1.0f) loadBarProgress -= 1.0f;
     }
 }

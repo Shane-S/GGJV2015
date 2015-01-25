@@ -412,68 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf29f67bd19c0e74caca49c1176ce469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 16, y: 16}
-  meterFill: {fileID: 2800000, guid: 73cdc8b061d11bc46b3afddfbcfc557c, type: 3}
-  hungerFontStyle:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: d23c18a4ad700b5489c2d8525cfd1e0f, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
-  borderDimensions: 3
+  loadBarTexture: {fileID: 0}
 --- !u!4 &404436425
 Transform:
   m_ObjectHideFlags: 0
@@ -792,6 +731,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 855529885}
   - 114: {fileID: 855529886}
+  - 114: {fileID: 855529887}
   m_Layer: 0
   m_Name: GUIManager
   m_TagString: Untagged
@@ -941,6 +881,18 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+--- !u!114 &855529887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 855529884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf29f67bd19c0e74caca49c1176ce469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadBarTexture: {fileID: 2800000, guid: 73cdc8b061d11bc46b3afddfbcfc557c, type: 3}
 --- !u!1 &863969701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1291,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 3600126011
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8d504289484ed35428be31954251e428, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1365,6 +1317,7 @@ GameObject:
   - 4: {fileID: 1411103833}
   - 212: {fileID: 1411103832}
   - 114: {fileID: 1411103834}
+  - 82: {fileID: 1411103835}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1417,8 +1370,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b81914901149924087931b4c900e884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carrot: {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
   world: {fileID: 418876072}
+  plantingClips:
+  - {fileID: 8300000, guid: fefb4c7649972b2488c051f9d54a36f2, type: 3}
+  - {fileID: 8300000, guid: 6e7912e43cba0df4b86cdee3a6d91a45, type: 3}
+  - {fileID: 8300000, guid: 580509a8b7a7db0438c7a2337b7579d4, type: 3}
+--- !u!82 &1411103835
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1411103831}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1462607299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1904,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 3600126011
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a10649f86747f4e419323ad7db5b7017, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1902,7 +1916,7 @@ Transform:
   m_GameObject: {fileID: 1901475829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: .100000001, y: .0799999982, z: .0399999991}
+  m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
