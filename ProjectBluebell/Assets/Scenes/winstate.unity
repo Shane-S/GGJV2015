@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTime: 5
+  fadeInOnStart: 1
 --- !u!1 &1704916520
 GameObject:
   m_ObjectHideFlags: 0
