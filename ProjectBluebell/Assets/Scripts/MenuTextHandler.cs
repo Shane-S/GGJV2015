@@ -104,8 +104,8 @@ public class MenuTextHandler : MonoBehaviour {
         // Set the player's name if it hasn't yet been set
         if (gState.playerName == null)
         {
-            Debug.Log("got here");
             gState.playerName = textInput;
+            Debug.Log(gState.playerName);
             textInput = "";
             return true;
         }

@@ -239,7 +239,7 @@ public class WinTextHandler : MonoBehaviour
 
     void MainMenu()
     {
-        Destroy(GameObject.Find("Globals"));
+        GameObject.Find("Globals").GetComponent<GlobalState>().reset();
         Application.LoadLevel(menuScene);
     }
 
