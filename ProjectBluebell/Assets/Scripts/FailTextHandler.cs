@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
-public class MenuTextHandler : MonoBehaviour {
+public class FailTextHandler : MonoBehaviour {
 
     private char character;
     private string textPrompt;
     private string textInput;
-    private string namePrompt;
-    private string menuOptions;
-    public string gameScene;
+    private string storyString;
+    public string gameScene; 
+    public string menuScene;
     public GUIStyle textInputBoxStyle;
     public GUIStyle menuOptionStyle;
     private float textInputHeight;
@@ -18,16 +17,18 @@ public class MenuTextHandler : MonoBehaviour {
     private float textMenuOptionsWidth;
     private bool handled;
     private Event previous;
+    public GameObject carrot;
+    private int xPos = 3;
 
-	// Use this for initialization
-	void Start () {
-        menuOptions = "|  Play  |  Exit  |";
+    // Use this for initialization
+    void Start()
+    {
+        storyString = "You failed to save humanity.";
         textPrompt = "What do you want to do? ";
-        namePrompt = "What is your name? ";
         textInput = "";
         SetDimensions();
         handled = false;
-	}
+    }
 
     void SetDimensions()
     {
@@ -40,12 +41,13 @@ public class MenuTextHandler : MonoBehaviour {
     void OnGUI()
     {
         Event e = Event.current;
+
         if (e.isKey)
         {
 
             Debug.Log("char keycode: " + e.keyCode + " character: " + e.character);
 
-            if (e.keyCode == KeyCode.None 
+            if (e.keyCode == KeyCode.None
                 && e.character != '\n'
                 && e.character != '\t')
             {
@@ -56,36 +58,34 @@ public class MenuTextHandler : MonoBehaviour {
             e.Use();
         }
 
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), menuOptions, menuOptionStyle);
-        
-        // If the player hasn't entered their name, show the name prompt; otherwise, show the "What do you want to
-        // do" prompt
-        if(GlobalState.playerName == null)
-            GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight),
-                      namePrompt + textInput, textInputBoxStyle);
-        else
-            GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), 
-                      textPrompt + textInput, textInputBoxStyle);
+        GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), storyString, menuOptionStyle);
+        GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight), textPrompt + textInput, textInputBoxStyle);
     }
 
     bool checkInputValidity()
     {
-        // Set the player's name if it hasn't yet been set
-        if (GlobalState.playerName == null)
-        {
-            GlobalState.playerName = textInput;
-            textInput = "";
-            return true;
-        }
-
-        if (string.Equals(textInput, "Play", System.StringComparison.CurrentCultureIgnoreCase))
+        if (string.Equals(textInput, "Play Again", System.StringComparison.CurrentCultureIgnoreCase))
         {
             PlayPressed();
+            textInput = "";
             return true;
         }
         else if (string.Equals(textInput, "Exit", System.StringComparison.CurrentCultureIgnoreCase))
         {
             ExitPressed();
+            textInput = "";
+            return true;
+        }
+        else if (string.Equals(textInput, "Main Menu", System.StringComparison.CurrentCultureIgnoreCase))
+        {
+            MainMenuPressed();
+            textInput = "";
+            return true;
+        }
+        else if (string.Equals(textInput, "Plant A Carrot", System.StringComparison.CurrentCultureIgnoreCase))
+        {
+            CarrotPressed();
+            textInput = "";
             return true;
         }
         textInput = "";
@@ -95,7 +95,7 @@ public class MenuTextHandler : MonoBehaviour {
     void PlayPressed()
     {
         CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
-        
+
         if (fade != null)
         {
             fade.FadeOut(StartGame);
@@ -120,6 +120,28 @@ public class MenuTextHandler : MonoBehaviour {
         }
     }
 
+    void MainMenuPressed()
+    {
+        CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
+
+        if (fade != null)
+        {
+            fade.FadeOut(MainMenu);
+        }
+        else
+        {
+            Debug.LogWarning("CameraFader not found");
+        }
+    }
+
+    void CarrotPressed()
+    {
+        Instantiate(carrot, new Vector3(xPos, 0, 0), new Quaternion());
+        if(xPos <= 15)
+            xPos += 1;
+    }
+
+
     void StartGame()
     {
         Application.LoadLevel(gameScene);
@@ -129,18 +151,23 @@ public class MenuTextHandler : MonoBehaviour {
     {
         Application.Quit();
     }
-	
-	// Update is called once per frame
-	void Update () 
+
+    void MainMenu()
+    {
+        Application.LoadLevel(menuScene);
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             if (textInput.Length - 1 >= 0)
-                textInput = textInput.Remove(textInput.Length-1);
+                textInput = textInput.Remove(textInput.Length - 1);
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             checkInputValidity();
         }
-	}
+    }
 }
