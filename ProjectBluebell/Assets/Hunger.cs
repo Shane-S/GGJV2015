@@ -45,6 +45,14 @@ public class Hunger : MonoBehaviour {
         timeToIncrease = 0;
     }
 
+    // Undocumented thing
+    void OnValidate()
+    {
+        interval = Mathf.Clamp(interval, 0.5f, 20);
+        increasePerInterval = Mathf.Clamp(increasePerInterval, 1, 15);
+        hunger = Mathf.Clamp(hunger, 0, 100);
+    }
+
     /// <summary>
     /// Gets the amount of time (in milliseconds) until the hunger meter will auto-increment.
     /// </summary>
