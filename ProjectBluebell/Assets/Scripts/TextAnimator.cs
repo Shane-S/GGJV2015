@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class TextAnimator : MonoBehaviour {
+    public float typingInterval = 0.1f;
 
     private char character;
     private string displayingText;
@@ -9,16 +10,14 @@ public class TextAnimator : MonoBehaviour {
     public GUIStyle displayingTextStyle;
     private float displayingTextHeight;
     private float displayingTextWidth;
-    private float typingInterval;
     private float currentCount;
     private int index;
     public string gameScene;
-
+    private bool typedLastUpdate = false;
 
 	// Use this for initialization
 	void Start () {
         textBank = "You are a farmer with a plentiful supply of carrots.\nThe world is hungry.\nWhat do you do now?\n\nPlant a carrot.";
-        typingInterval = 0.1f;
         currentCount = 0f;
         index = 0;
 	}
@@ -32,6 +31,11 @@ public class TextAnimator : MonoBehaviour {
 
     void OnGUI()
     {
+        if(typedLastUpdate)
+        {
+            if (textBank[index - 1] > 32 && textBank[index - 1] < 127) audio.Play();
+            typedLastUpdate = false;
+        }
         GUI.Label(new Rect(Screen.width / 8f, Screen.height / 4f, displayingTextWidth, displayingTextHeight), displayingText, displayingTextStyle);
     }
 
@@ -68,6 +72,7 @@ public class TextAnimator : MonoBehaviour {
                 displayingText += textBank[index];
                 index++;
                 currentCount = 0;
+                typedLastUpdate = true;
             }
 
             if (index == textBank.Length)

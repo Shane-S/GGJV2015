@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 2
-  increasePerInterval: 10
+  increasePerInterval: 5
   hunger: 0
   carrotsPlanted: 0
 --- !u!1 &413395550
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   failState: failstate
   winState: winstate
-  carrotsToWin: 30
+  carrotsToWin: 2
 --- !u!4 &924141085
 Transform:
   m_ObjectHideFlags: 0
