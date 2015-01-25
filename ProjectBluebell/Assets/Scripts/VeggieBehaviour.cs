@@ -12,7 +12,7 @@ public class VeggieBehaviour : MonoBehaviour
     /// <summary>
     /// The evil version of this veggie.
     /// </summary>
-    public GameObject evilVersion;
+    public Sprite evilVersion;
 
     private bool _isSeen = false;
 

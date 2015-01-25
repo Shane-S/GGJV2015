@@ -17,7 +17,7 @@ public class GUIDraw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Move the bar along; keep it's position between zero and one for best float point precision
+        //Move the bar along; keep its position between zero and one for best float point precision
         loadBarProgress += Time.deltaTime * loadBarSpeed;
         if (loadBarProgress >= 1.0f) loadBarProgress -= 1.0f;
     }
