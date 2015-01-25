@@ -55,7 +55,7 @@ public class GameStateBehaviour : MonoBehaviour
     void getNextVeggie()
     {
         selectedVeggie = random.Next(0, thisLevel.veggies.Length);
-        selectedValid = "Plant a " + thisLevel.veggies[selectedVeggie].gameObject.name;
+        selectedValid = thisLevel.veggies[selectedVeggie].GetComponent<VeggieBehaviour>().validString;
     }
 
     /// <summary>
