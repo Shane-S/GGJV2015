@@ -312,11 +312,11 @@ MonoBehaviour:
     veggiesToWin: 30
     hungerInterval: 2
     hungerIncreasePerTick: 5
-    cutsceneText: This is a test.
+    cutsceneText: You are a farmer with a plentiful supply of carrots.\nThe world
+      is hungry.\nWhat do you do now?\n\nPlant a carrot.
     hungerDecreaseInterval: 3
     hungerIncreaseInterval: 3
   - veggies:
-    - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     veggiesToWin: 35
     hungerInterval: 2
@@ -325,8 +325,6 @@ MonoBehaviour:
     hungerDecreaseInterval: 4
     hungerIncreaseInterval: 4
   - veggies:
-    - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
-    - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
     - {fileID: 135148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
     veggiesToWin: 40
     hungerInterval: 3
