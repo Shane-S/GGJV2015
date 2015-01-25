@@ -8,6 +8,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     private int updateCounter;
     private bool isAnimating;
     private GameObject[] curVeggies;
+    private int veggieToPlant;
 
 	// Use this for initialization
 	void Start () {
@@ -27,20 +28,20 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 Animator a = GameObject.Find("Arm").GetComponent<Animator>();
                 a.SetBool("planting", false);
                 isAnimating = false;
+                GameObject c = (GameObject)Instantiate(curVeggies[veggieToPlant],
+                                               this.transform.position - new Vector3(-0.3f, 0.2f, 0),
+                                               this.transform.rotation);
+                c.transform.parent = world.transform;
             }
         }
     }
 
     public void PlantVeggie(int veggieIndex)
     {
+        veggieToPlant = veggieIndex;
         Animator a = GameObject.Find("Arm").GetComponent<Animator>();
         a.SetBool("planting", true);
         isAnimating = true;
         updateCounter = 0;
-
-        GameObject c = (GameObject)Instantiate(curVeggies[veggieIndex], 
-                                               this.transform.position - new Vector3(-0.3f, 0.2f, 0), 
-                                               this.transform.rotation);
-        c.transform.parent = world.transform;
     }
 }
