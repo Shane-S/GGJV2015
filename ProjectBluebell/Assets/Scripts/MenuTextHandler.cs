@@ -26,12 +26,12 @@ public class MenuTextHandler : MonoBehaviour {
     private int maxStringLength = 50;
     private GlobalState gState;
 
-    private string[] play = { "Play", "Start", "Begin", "Start Game", "Play Game", "Begin Game", "Launch", "Launch Game" };
+    private string[] play = { "Play", "Start", "Begin", "Start Game", "Play Game", "Begin Game", "Launch", "Launch Game", "Plant a carrot" };
     private string[] exit = { "Exit", "Quit", "Stop", "Exit Game", "Quit Game", "Stop Game", "Escape", "Escape Game" };
     
 	// Use this for initialization
 	void Start () {
-        menuOptions = "|  Play  |  Exit  |";
+        menuOptions = "";
         textPrompt = "What do you do now? ";
         namePrompt = "What is your name? ";
         textInput = "";
@@ -69,7 +69,7 @@ public class MenuTextHandler : MonoBehaviour {
             e.Use();
         }
 
-        GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), menuOptions, menuOptionStyle);
+        //GUI.Label(new Rect(Screen.width / 4, Screen.height / 4, textMenuOptionsWidth, textMenuOptionsHeight), menuOptions, menuOptionStyle);
         
         // If the player hasn't entered their name, show the name prompt; otherwise, show the "What do you want to
         // do" prompt
@@ -109,7 +109,8 @@ public class MenuTextHandler : MonoBehaviour {
     {
         foreach(string s in words)
         {
-            if (string.Equals(textInput, s, System.StringComparison.CurrentCultureIgnoreCase))
+            if (string.Equals(textInput, s, System.StringComparison.CurrentCultureIgnoreCase) ||
+                textInput.Contains("plant") || textInput.Contains("Plant"))
                 return true;
         }
         return false;
