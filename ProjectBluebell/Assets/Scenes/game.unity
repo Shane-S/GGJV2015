@@ -176,6 +176,7 @@ MonoBehaviour:
   increasePerInterval: 5
   hunger: 0
   failState: failstate
+  fading: 0
 --- !u!1 &413395550
 GameObject:
   m_ObjectHideFlags: 0
