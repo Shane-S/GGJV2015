@@ -57,13 +57,13 @@ public class GameTextHandler : MonoBehaviour
     bool checkInputValidity()
     {
 
-        textInput = "";
-
         if (string.Equals(textInput, "Plant a Carrot", System.StringComparison.CurrentCultureIgnoreCase))
         {
             PlantCarrot();
+            textInput = "";
             return true;
         }
+        textInput = "";
 
         return false;
     }
@@ -71,6 +71,8 @@ public class GameTextHandler : MonoBehaviour
     private void PlantCarrot()
     {
         PlayerBehaviourScript playerBehaviour = GameObject.Find("Player").GetComponent<PlayerBehaviourScript>();
+
+        Debug.Log("Planting a carrot");
 
         if (playerBehaviour != null)
         {
