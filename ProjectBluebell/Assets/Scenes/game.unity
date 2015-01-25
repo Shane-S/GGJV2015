@@ -175,6 +175,7 @@ MonoBehaviour:
   interval: 5
   increasePerInterval: 5
   hunger: 0
+  failState: failstate
 --- !u!1 &413395550
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d448de070764e5449ac94c7b5871f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: 
+  gameScene: game
   textInputBoxStyle:
     m_Name: 
     m_Normal:
@@ -897,6 +898,7 @@ GameObject:
   - 92: {fileID: 1462607302}
   - 124: {fileID: 1462607301}
   - 81: {fileID: 1462607300}
+  - 114: {fileID: 1462607305}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -969,6 +971,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1462607305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462607299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59142b90742e6d142bfd1ed336333a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTime: 5
 --- !u!1 &1770133331
 GameObject:
   m_ObjectHideFlags: 0
