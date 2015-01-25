@@ -25,6 +25,9 @@ public class MenuTextHandler : MonoBehaviour {
     private string cursorChar;
     private int maxStringLength = 50;
 
+    private string[] play = { "Play", "Start", "Begin", "Start Game", "Play Game", "Begin Game", "Launch", "Launch Game" };
+    private string[] exit = { "Exit", "Quit", "Stop", "Exit Game", "Quit Game", "Stop Game", "Escape", "Escape Game" };
+    
 	// Use this for initialization
 	void Start () {
         menuOptions = "|  Play  |  Exit  |";
@@ -85,17 +88,27 @@ public class MenuTextHandler : MonoBehaviour {
             return true;
         }
 
-        if (string.Equals(textInput, "Play", System.StringComparison.CurrentCultureIgnoreCase))
+        if (checkValidity(play))
         {
             PlayPressed();
             return true;
         }
-        else if (string.Equals(textInput, "Exit", System.StringComparison.CurrentCultureIgnoreCase))
+        else if (checkValidity(exit))
         {
             ExitPressed();
             return true;
         }
         textInput = "";
+        return false;
+    }
+
+    bool checkValidity(string[] words)
+    {
+        foreach(string s in words)
+        {
+            if (string.Equals(textInput, s, System.StringComparison.CurrentCultureIgnoreCase))
+                return true;
+        }
         return false;
     }
 

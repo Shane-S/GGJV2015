@@ -26,6 +26,10 @@ public class FailTextHandler : MonoBehaviour {
     private string cursorChar;
     private int maxStringLength = 50;
 
+    private string[] play = { "Play", "Start", "Begin", "Start Game", "Play Game", "Begin Game", "Launch", "Launch Game", "Play Again", "Try Again", "replay", "Go Again", "Again" };
+    private string[] exit = { "Exit", "Quit", "Stop", "Exit Game", "Quit Game", "Stop Game", "Escape", "Escape Game" };
+    private string[] menu = { "Main Menu", "Menu", "Start Screen" };
+
     // Use this for initialization
     void Start()
     {
@@ -71,19 +75,19 @@ public class FailTextHandler : MonoBehaviour {
 
     bool checkInputValidity()
     {
-        if (string.Equals(textInput, "Play Again", System.StringComparison.CurrentCultureIgnoreCase))
+        if (checkValidity(play))
         {
             PlayPressed();
             textInput = "";
             return true;
         }
-        else if (string.Equals(textInput, "Exit", System.StringComparison.CurrentCultureIgnoreCase))
+        else if (checkValidity(exit))
         {
             ExitPressed();
             textInput = "";
             return true;
         }
-        else if (string.Equals(textInput, "Main Menu", System.StringComparison.CurrentCultureIgnoreCase))
+        else if (checkValidity(menu))
         {
             MainMenuPressed();
             textInput = "";
@@ -197,5 +201,14 @@ public class FailTextHandler : MonoBehaviour {
                 }
             }
         }
+    }
+    bool checkValidity(string[] words)
+    {
+        foreach (string s in words)
+        {
+            if (string.Equals(textInput, s, System.StringComparison.CurrentCultureIgnoreCase))
+                return true;
+        }
+        return false;
     }
 }
