@@ -38,10 +38,4 @@ public class GlobalState : MonoBehaviour {
 	void Update () {
 	
 	}
-
-    public void reset()
-    {
-        playerName = null;
-        currentLevel = 0;
-    }
 }

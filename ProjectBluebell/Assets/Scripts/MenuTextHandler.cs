@@ -55,9 +55,6 @@ public class MenuTextHandler : MonoBehaviour {
         Event e = Event.current;
         if (e.isKey)
         {
-
-            Debug.Log("char keycode: " + e.keyCode + " character: " + e.character);
-
             if (e.keyCode == KeyCode.None 
                 && e.character != '\n'
                 && e.character != '\t'
@@ -87,6 +84,7 @@ public class MenuTextHandler : MonoBehaviour {
         // Set the player's name if it hasn't yet been set
         if (gState.playerName == null)
         {
+            Debug.Log("got here");
             gState.playerName = textInput;
             textInput = "";
             return true;

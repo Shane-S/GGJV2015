@@ -310,7 +310,7 @@ MonoBehaviour:
   levels:
   - veggies:
     - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
-    veggiesToWin: 20
+    veggiesToWin: 2
     timePerTick: 3
     increasePerTick: 2
     startingHunger: 50
@@ -319,7 +319,7 @@ MonoBehaviour:
       is hungry.\r\nWhat do you do now?\r\n\r\nPlant a carrot."
   - veggies:
     - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
-    veggiesToWin: 25
+    veggiesToWin: 2
     timePerTick: 3
     increasePerTick: 2
     startingHunger: 50

@@ -86,14 +86,14 @@ public class GameStateBehaviour : MonoBehaviour
     /// </summary>
     void checkForEndGame()
     {
-        finished = (hungerLevel.hunger == 0) || (hungerLevel.hunger == 100);
+        finished = (hungerLevel.hunger <= 0) || (hungerLevel.hunger >= 100);
 
         if(finished)
         {
             CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
             hungerLevel.stopHungerTimer();
 
-            if (hungerLevel.hunger == 0)
+            if (hungerLevel.hunger <= 0)
             {
                 GlobalState global = GameObject.Find("Globals").GetComponent<GlobalState>();
 
