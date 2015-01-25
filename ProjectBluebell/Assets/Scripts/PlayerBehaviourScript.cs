@@ -16,7 +16,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     public void PlantCarrot()
     {
-        GameObject c = (GameObject)Instantiate(carrot, this.transform.position - new Vector3(0, 0.2f, 0), this.transform.rotation);
+        GameObject c = (GameObject)Instantiate(carrot, this.transform.position - new Vector3(-0.3f, 0.2f, 0), this.transform.rotation);
         c.transform.parent = world.transform;
     }
 }
