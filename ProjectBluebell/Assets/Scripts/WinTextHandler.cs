@@ -26,8 +26,8 @@ public class WinTextHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        storyString = "You successfully saved humanity.";
-        textPrompt = "What do you want to do now? ";
+        storyString = "You successfully ended world hunger.";
+        textPrompt = "What do you do now? ";
         textInput = "";
         SetDimensions();
         handled = false;

@@ -13,16 +13,6 @@ public class WorldBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            speed -= 0.01f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            speed += 0.01f;
-        }
-
-        transform.Rotate(0.0f, 0.0f, speed);
+        transform.RotateAround(this.transform.position, new Vector3(0, 0, 1), speed);//(0.0f, 0.0f, speed);
 	}
 }
