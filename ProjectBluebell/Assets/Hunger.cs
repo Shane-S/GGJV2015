@@ -41,6 +41,7 @@ public class Hunger : MonoBehaviour {
 		if (timeToIncrease >= interval)
 		{
 			hunger += increasePerInterval;
+            hunger = hunger > 100 ? 100 : hunger;
 			timeToIncrease = 0;
 		}     
 	}
