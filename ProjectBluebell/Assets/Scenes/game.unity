@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   failState: failstate
   winState: winstate
-  carrotsToWin: 30
+  carrotsToWin: 10
 --- !u!4 &924141085
 Transform:
   m_ObjectHideFlags: 0

@@ -246,7 +246,7 @@ public class WinTextHandler : MonoBehaviour
     {
         string input = textInput;
         textInput = "";
-        storyString = GlobalState.playerName += " spent the rest of thier life " + input;
+        storyString = GlobalState.playerName += " spent the rest of their life " + input;
         textPrompt = "Play Again? ";
         state = (int)states.playagain;
         hasWon = true;
