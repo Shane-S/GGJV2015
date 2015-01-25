@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene: intro
+  menuScene: menu
   textInputBoxStyle:
     m_Name: 
     m_Normal:

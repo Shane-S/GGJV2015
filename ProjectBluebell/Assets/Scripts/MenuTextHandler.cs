@@ -10,6 +10,7 @@ public class MenuTextHandler : MonoBehaviour {
     private string namePrompt;
     private string menuOptions;
     public string gameScene;
+    public string menuScene;
     public GUIStyle textInputBoxStyle;
     public GUIStyle menuOptionStyle;
     private float textInputHeight;
@@ -74,10 +75,10 @@ public class MenuTextHandler : MonoBehaviour {
         // If the player hasn't entered their name, show the name prompt; otherwise, show the "What do you want to
         // do" prompt
         if(gState.playerName == null)
-            GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight),
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 4, textInputWidth, textInputHeight),
                       namePrompt + textInput + cursorChar, textInputBoxStyle);
         else
-            GUI.Label(new Rect(Screen.width / 4, Screen.height / 2, textInputWidth, textInputHeight),
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 4, textInputWidth, textInputHeight),
                       textPrompt + textInput + cursorChar, textInputBoxStyle);
     }
 
@@ -151,7 +152,8 @@ public class MenuTextHandler : MonoBehaviour {
 
     void QuitGame()
     {
-        Application.Quit();
+        Destroy(GameObject.Find("Globals"));
+        Application.LoadLevel(menuScene);
     }
 	
 	// Update is called once per frame
