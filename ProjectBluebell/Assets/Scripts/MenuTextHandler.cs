@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class TextInput : MonoBehaviour {
+public class MenuTextHandler : MonoBehaviour {
 
     private char character;
     private string textPrompt;

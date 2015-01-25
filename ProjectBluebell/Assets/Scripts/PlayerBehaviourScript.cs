@@ -13,11 +13,11 @@ public class PlayerBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            GameObject c = (GameObject)Instantiate(carrot, this.transform.position, this.transform.rotation);
-            c.transform.parent = world.transform;
-        }
 	}
+
+    public void PlantCarrot()
+    {
+        GameObject c = (GameObject)Instantiate(carrot, this.transform.position, this.transform.rotation);
+        c.transform.parent = world.transform;
+    }
 }
