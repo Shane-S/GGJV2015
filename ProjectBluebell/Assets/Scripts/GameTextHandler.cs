@@ -106,7 +106,7 @@ public class GameTextHandler : MonoBehaviour
         displayFeedback = true;
         feedBackTimeLeft = feedBackTime;
         textInput = "";
-        textFeedback = "Say What??";
+        textFeedback = "I'm not sure what you want to do... ";
     }
 
     // Gets the text that was input.

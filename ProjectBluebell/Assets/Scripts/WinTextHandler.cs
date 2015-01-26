@@ -34,13 +34,14 @@ public class WinTextHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        storyString = "You successfully ended world hunger.";
-        textPrompt = "What do you do now? ";
+        gState = GameObject.Find("Globals").GetComponent<GlobalState>();
+        storyString = gState.playerName + " successfully ended world hunger.";
+        textPrompt = "Play next level? ";
         textInput = "";
         SetDimensions();
         handled = false;
         hasWon = false;
-        state = (int)states.none;
+        state = (int)states.playagain;
         fading = false;
     }
 
@@ -85,6 +86,8 @@ public class WinTextHandler : MonoBehaviour
             {
                 case (int)states.playagain:
                     {
+                        gState = GameObject.Find("Globals").GetComponent<GlobalState>();
+                        gState.changeCurrentLevel(++gState.currentLevel);
                         PlayPressed();
                         break;
                     }
@@ -215,10 +218,7 @@ public class WinTextHandler : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                if (!hasWon)
-                    ShowWinState();
-                else
-                    checkInputValidity();
+                checkInputValidity();
             }
         }
 
@@ -243,15 +243,5 @@ public class WinTextHandler : MonoBehaviour
             }
         }
         
-    }
-
-    void ShowWinState()
-    {
-        string input = textInput;
-        textInput = "";
-        storyString = gState.playerName += " spent the rest of their life " + input;
-        textPrompt = "Play Again? ";
-        state = (int)states.playagain;
-        hasWon = true;
     }
 }

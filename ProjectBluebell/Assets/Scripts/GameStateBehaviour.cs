@@ -94,6 +94,17 @@ public class GameStateBehaviour : MonoBehaviour
 
             if (hungerLevel.veggiesPlanted == thisLevel.veggiesToWin)
             {
+                GlobalState global = GameObject.Find("Globals").GetComponent<GlobalState>();
+
+                if (global != null)
+                {
+                    global.changeCurrentLevel(global.currentLevel++);
+                }
+                else
+                {
+                    Debug.LogWarning("Global not found, level couldn't be increased.");
+                }
+
                 result = WON;
                 fade.FadeOut(WinGame);
             }
