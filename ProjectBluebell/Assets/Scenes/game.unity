@@ -1364,10 +1364,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 418876072}
-  plantingClips:
+  plantingGoodVegClips:
   - {fileID: 8300000, guid: fefb4c7649972b2488c051f9d54a36f2, type: 3}
   - {fileID: 8300000, guid: 6e7912e43cba0df4b86cdee3a6d91a45, type: 3}
   - {fileID: 8300000, guid: 580509a8b7a7db0438c7a2337b7579d4, type: 3}
+  plantingBadVegClips:
+  - {fileID: 8300000, guid: 308a8ea9476d82a43b7cb581a4ebd990, type: 3}
+  - {fileID: 8300000, guid: 2a3b8122082e0f249b7ad65380580e87, type: 3}
+  - {fileID: 8300000, guid: 918221495f218e747a0d2b990d3a9bb4, type: 3}
 --- !u!82 &1411103835
 AudioSource:
   m_ObjectHideFlags: 0
