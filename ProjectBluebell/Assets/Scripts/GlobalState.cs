@@ -39,14 +39,14 @@ public class GlobalState : MonoBehaviour {
 	
 	}
 
+    public bool isMaxLevel()
+    {
+        return currentLevel == levels.Length - 1;
+    }
+
     public void reset()
     {
         playerName = null;
         currentLevel = 0;
-    }
-
-    public bool isMaxLevel()
-    {
-        return currentLevel == maxLevel;
     }
 }

@@ -60,9 +60,6 @@ public class GameTextHandler : MonoBehaviour
 
         if (e.isKey)
         {
-
-            Debug.Log("char keycode: " + e.keyCode + " character: " + e.character);
-
             if (e.keyCode == KeyCode.None
                 && e.character != '\n'
                 && e.character != '\t'

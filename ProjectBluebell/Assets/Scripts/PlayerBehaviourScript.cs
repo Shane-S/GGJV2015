@@ -31,7 +31,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 Animator a = GameObject.Find("Arm").GetComponent<Animator>();
                 a.SetBool("planting", false);
                 isAnimating = false;
-
+               
                 // Actually drop the plant on the scene
                 GameObject c = (GameObject)Instantiate(curVeggies[veggieToPlant],
                                                this.transform.position - new Vector3(-0.3f, 0.2f, 0),
@@ -45,16 +45,21 @@ public class PlayerBehaviourScript : MonoBehaviour {
                     VeggieBehaviour v = c.GetComponent<VeggieBehaviour>();
                     r.sprite = v.evilVersion;
                 }
+                
+                // Play the audio clip
+                AudioClip[] clipsToPlay = veggieIsEvil ? plantingBadVegClips : plantingGoodVegClips;
+                audio.PlayOneShot(clipsToPlay[Random.Range(0, clipsToPlay.Length)]);
             }
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="veggieIndex">The index in the level's </param>
+    /// <param name="isEvil"></param>
     public void PlantVeggie(int veggieIndex, bool isEvil)
     {
-        if (isEvil)
-            audio.PlayOneShot(plantingBadVegClips[Random.Range(0, plantingBadVegClips.Length)]);
-        else
-            audio.PlayOneShot(plantingGoodVegClips[Random.Range(0, plantingGoodVegClips.Length)]);
         veggieToPlant = veggieIndex;
         veggieIsEvil = isEvil;
         Animator a = GameObject.Find("Arm").GetComponent<Animator>();

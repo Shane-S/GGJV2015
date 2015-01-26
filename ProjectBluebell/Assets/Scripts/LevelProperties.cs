@@ -5,9 +5,9 @@ using System.Collections;
 public class LevelProperties {
     public GameObject[] veggies;
     public int veggiesToWin;
-    public float hungerInterval;
-    public float hungerIncreasePerTick;
+    public float timePerTick;
+    public float increasePerTick;
+    public float startingHunger;
+    public float increaseOnFailure;
     public string cutsceneText;
-    public float hungerDecreaseInterval;
-    public float hungerIncreaseInterval;
 }

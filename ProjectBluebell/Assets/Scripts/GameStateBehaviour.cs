@@ -66,15 +66,14 @@ public class GameStateBehaviour : MonoBehaviour
         if (string.Equals(textInput.getInput(), selectedValid, System.StringComparison.CurrentCultureIgnoreCase))
         {
             hungerLevel.resetHungerTimer();
-            hungerLevel.hunger -= thisLevel.hungerDecreaseInterval;
+            hungerLevel.decreaseHunger();
             player.PlantVeggie(selectedVeggie, false);
-            hungerLevel.veggiesPlanted++;
             getNextVeggie();
         }
         else
         {
             player.PlantVeggie(selectedVeggie, true);
-            hungerLevel.hunger += thisLevel.hungerIncreaseInterval;
+            hungerLevel.increaseHunger();
             textInput.showFeedback();
         }
 
@@ -87,14 +86,14 @@ public class GameStateBehaviour : MonoBehaviour
     /// </summary>
     void checkForEndGame()
     {
-        finished = (hungerLevel.veggiesPlanted == thisLevel.veggiesToWin) || (hungerLevel.hunger >= 100);
+        finished = (hungerLevel.hunger <= 0) || (hungerLevel.hunger >= 100);
 
         if(finished)
         {
             CameraFader fade = GameObject.Find("Main Camera").GetComponent<CameraFader>();
             hungerLevel.stopHungerTimer();
 
-            if (hungerLevel.veggiesPlanted == thisLevel.veggiesToWin)
+            if (hungerLevel.hunger <= 0)
             {
                 GlobalState global = GameObject.Find("Globals").GetComponent<GlobalState>();
 
