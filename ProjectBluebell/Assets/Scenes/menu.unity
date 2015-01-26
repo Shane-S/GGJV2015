@@ -107,7 +107,7 @@ MonoBehaviour:
     m_Name: 
     m_Normal:
       m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: .0705882385, g: .0666666701, b: .0784313753, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -370,8 +370,8 @@ MonoBehaviour:
   - veggies:
     - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
     veggiesToWin: 3
-    hungerInterval: .100000001
-    hungerIncreasePerTick: 100
+    hungerInterval: 10
+    hungerIncreasePerTick: 1
     cutsceneText: You are a farmer with a plentiful supply of carrots.\nThe world
       is hungry.\nWhat do you do now?\n\nPlant a carrot.
     hungerDecreaseInterval: 3
@@ -381,7 +381,8 @@ MonoBehaviour:
     veggiesToWin: 35
     hungerInterval: 2
     hungerIncreasePerTick: 6
-    cutsceneText: This is another test.
+    cutsceneText: You are a farmer with a plentiful supply of asparagus.\nThe world
+      is hungry.\nWhat do you do now?\n\nPlant an asparagus.
     hungerDecreaseInterval: 4
     hungerIncreaseInterval: 4
   - veggies:
@@ -389,7 +390,8 @@ MonoBehaviour:
     veggiesToWin: 40
     hungerInterval: 3
     hungerIncreasePerTick: 10
-    cutsceneText: This is the final test.
+    cutsceneText: You are a farmer with a plentiful supply of cauliflower.\nThe world
+      is hungry.\nWhat do you do now?\n\nPlant a cauliflower.
     hungerDecreaseInterval: 5
     hungerIncreaseInterval: 5
 --- !u!4 &845663145
