@@ -232,11 +232,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1001 &202223596
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+  m_RootGameObject: {fileID: 845663143}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &845663143
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabParentObject: {fileID: 102208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+  m_PrefabInternal: {fileID: 202223596}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 845663145}
@@ -251,19 +295,44 @@ GameObject:
 --- !u!114 &845663144
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabParentObject: {fileID: 11402208, guid: 973ee6da74b54ef4ebc75aa30846ae52,
+    type: 2}
+  m_PrefabInternal: {fileID: 202223596}
   m_GameObject: {fileID: 845663143}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a51d6b462bb40d5469ab3365b373fa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
+  currentLevel: 0
+  levels:
+  - veggies:
+    - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
+    veggiesToWin: 30
+    hungerInterval: 2
+    hungerIncreasePerTick: 5
+    cutsceneText: This is a test.
+  - veggies:
+    - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
+    - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
+    veggiesToWin: 35
+    hungerInterval: 2
+    hungerIncreasePerTick: 6
+    cutsceneText: This is another test.
+  - veggies:
+    - {fileID: 128894, guid: 792854bb0a64b914ca0ffa99f67c7e1d, type: 2}
+    - {fileID: 133868, guid: 0e9c059b51c2d2f408e267be27f453e1, type: 2}
+    - {fileID: 135148, guid: b4beaa019932f194e8e951e4c485210c, type: 2}
+    veggiesToWin: 40
+    hungerInterval: 3
+    hungerIncreasePerTick: 10
+    cutsceneText: This is the final test.
 --- !u!4 &845663145
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabParentObject: {fileID: 402208, guid: 973ee6da74b54ef4ebc75aa30846ae52, type: 2}
+  m_PrefabInternal: {fileID: 202223596}
   m_GameObject: {fileID: 845663143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
