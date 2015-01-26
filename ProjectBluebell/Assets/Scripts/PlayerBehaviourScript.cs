@@ -9,6 +9,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     private bool isAnimating;
     private GameObject[] curVeggies;
     public AudioClip[] plantingClips;
+    private int veggieToPlant;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 Animator a = GameObject.Find("Arm").GetComponent<Animator>();
                 a.SetBool("planting", false);
                 isAnimating = false;
+                GameObject c = (GameObject)Instantiate(curVeggies[veggieToPlant],
+                                               this.transform.position - new Vector3(-0.3f, 0.2f, 0),
+                                               this.transform.rotation);
+                c.transform.parent = world.transform;
             }
         }
     }
@@ -35,14 +40,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
     public void PlantVeggie(int veggieIndex)
     {
         audio.PlayOneShot(plantingClips[Random.Range(0, plantingClips.Length)]);
+        veggieToPlant = veggieIndex;
         Animator a = GameObject.Find("Arm").GetComponent<Animator>();
         a.SetBool("planting", true);
         isAnimating = true;
         updateCounter = 0;
-
-        GameObject c = (GameObject)Instantiate(curVeggies[veggieIndex], 
-                                               this.transform.position - new Vector3(-0.3f, 0.2f, 0), 
-                                               this.transform.rotation);
-        c.transform.parent = world.transform;
     }
 }
