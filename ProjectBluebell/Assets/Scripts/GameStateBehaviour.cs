@@ -66,6 +66,7 @@ public class GameStateBehaviour : MonoBehaviour
         if (string.Equals(textInput.getInput(), selectedValid, System.StringComparison.CurrentCultureIgnoreCase))
         {
             hungerLevel.resetHungerTimer();
+            hungerLevel.hunger -= thisLevel.hungerDecreaseInterval;
             player.PlantVeggie(selectedVeggie, false);
             hungerLevel.veggiesPlanted++;
             getNextVeggie();
@@ -73,6 +74,7 @@ public class GameStateBehaviour : MonoBehaviour
         else
         {
             player.PlantVeggie(selectedVeggie, true);
+            hungerLevel.hunger += thisLevel.hungerIncreaseInterval;
             textInput.showFeedback();
         }
 

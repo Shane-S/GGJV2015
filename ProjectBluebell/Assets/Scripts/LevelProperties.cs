@@ -8,4 +8,6 @@ public class LevelProperties {
     public float hungerInterval;
     public float hungerIncreasePerTick;
     public string cutsceneText;
+    public float hungerDecreaseInterval;
+    public float hungerIncreaseInterval;
 }
